@@ -1,0 +1,50 @@
+state,rule,covers,covers_note,verified,days_rule_in_force,alert_days,alert_days_unprotected,days_95F,days_95F_unprotected,days_hi105,days_hi105_unprotected,share_of_state_population_sampled,source
+Alabama,No hot-weather rule,,,no rule: own code,0.0,10.9,10.9,13.0,13.0,10.4,10.4,0.39,https://www.alabamapower.com/content/dam/alabama-power/pdfs-docs/Rates/APSC%20GENERAL%20RULES.pdf
+Arizona,above 95°F,all,A utility may instead specify June 1 - October 15 as non-termination dates; scored on the temperature option,primary,132.9,19.8,0.0,139.1,6.2,32.6,0.0,0.89,https://www.law.cornell.edu/regulations/arizona/Ariz-Admin-Code-SS-R14-2-211
+Arkansas,at or above 95°F,subset,Only customers identified as 65 or older or handicapped,primary,19.8,13.0,3.8,19.8,0.0,12.5,2.3,0.39,https://apsc.arkansas.gov/consumer-services/suspension-of-service/
+California,at or above 90°F,all,Investor-owned utilities; interim statewide threshold adopted July 2026,primary,81.6,9.6,1.1,29.3,0.0,1.5,0.0,0.53,https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M610/K649/610649527.PDF
+Colorado,at or above 95°F,all,,primary,9.5,1.6,0.5,9.5,0.0,0.1,0.0,0.55,https://www.law.cornell.edu/regulations/colorado/4-CCR-723-3-3407
+Connecticut,No hot-weather rule,,,no rule: own code,0.0,8.1,8.1,1.4,1.4,0.4,0.4,0.88,https://law.justia.com/codes/connecticut/title-16/chapter-283/section-16-262c/
+Delaware,heat index at or above 105°F (06-01 to 09-30 only),all,Cooling season only,primary,2.9,9.4,7.2,4.1,2.6,2.9,0.0,1.0,https://regulations.delaware.gov/AdminCode/title26/3000/3002.shtml
+District of Columbia,at or above 95°F,all,,primary,15.4,6.0,1.0,10.4,0.0,4.0,0.4,1.0,https://code.dccouncil.gov/us/dc/council/code/sections/34-1506.01
+Florida,No hot-weather rule,,,no rule: own code,0.0,8.4,8.4,13.0,13.0,20.2,20.2,0.42,https://www.law.cornell.edu/regulations/florida/Fla-Admin-Code-Ann-R-25-6-105
+Georgia,weather-service heat advisory or warning,all,,primary,2.2,2.3,0.1,7.7,6.6,0.8,0.3,0.36,https://rules.sos.ga.gov/gac/515-3-2
+Idaho,No hot-weather rule,,,no rule: own code (one section),0.0,6.7,6.7,25.4,25.4,0.0,0.0,0.6,https://www.law.cornell.edu/regulations/idaho/IDAPA-31.21.01.306
+Illinois,"at or above 90°F or weather-service heat advisory, warning or watch",all,Where gas or electricity is the source of cooling,primary,18.2,1.6,0.0,2.6,0.0,1.5,0.0,0.63,https://www.ilga.gov/ftp/Public%20Acts/103/103-0019.htm
+Indiana,heat index at or above 95°F,subset,Only customers eligible for and applied to the state energy-assistance program,secondary,10.8,3.3,0.4,0.6,0.1,0.7,0.0,0.37,https://app.midpage.ai/laws/in-code/t8/a1/ch2/s121-1d65f8
+Iowa,No hot-weather rule,,,no rule: own code,0.0,6.7,6.7,3.3,3.3,2.7,2.7,0.37,https://www.law.cornell.edu/regulations/iowa/Iowa-Admin-Code-r-199-20-4
+Kansas,No hot-weather rule,,,no rule: news report,0.0,14.2,14.2,18.7,18.7,7.2,7.2,0.54,https://www.kansascity.com/news/weather-news/article277041373.html
+Kentucky,No hot-weather rule,,,no rule: own code,0.0,3.9,3.9,4.5,4.5,1.6,1.6,0.34,https://www.law.cornell.edu/regulations/kentucky/807-KAR-5-006
+Louisiana,weather-service heat advisory or warning,all,,primary,13.4,13.4,0.0,24.5,15.5,24.4,13.4,0.38,https://lpscpubvalence.lpsc.louisiana.gov/portal/PSC/ViewFile?fileId=46j1cnIKxpM%3D
+Maine,weather-service heat advisory or warning,all,The federal clearinghouse lists Maine as having no rule,primary,3.2,3.2,0.0,0.5,0.2,0.1,0.0,0.66,https://www.law.cornell.edu/regulations/maine/65-407-C-M-R-ch-815-SS-10
+Maryland,at or above 95°F or heat index at or above 95°F,all,,primary,46.4,5.9,0.0,7.1,0.0,4.5,0.0,0.66,https://regs.maryland.gov/us/md/exec/comar/20.31/index.full.html
+Massachusetts,No hot-weather rule,,,no rule: regulator page,0.0,7.9,7.9,3.2,3.2,0.7,0.7,0.69,https://www.mass.gov/info-details/when-am-i-protected-from-having-my-utilities-shut-off
+Michigan,No hot-weather rule,,,no rule: two compilations agree,0.0,3.4,3.4,0.9,0.9,0.3,0.3,0.5,https://liheapch.acf.gov/Disconnect/disconnect.htm
+Minnesota,"weather-service heat advisory, warning or watch",all,The federal clearinghouse lists Minnesota as having no rule,primary,6.8,6.8,0.0,2.4,0.4,0.7,0.0,0.51,https://www.revisor.mn.gov/statutes/cite/216B.0975
+Mississippi,weather-service excessive heat warning,all,,primary,3.6,14.9,11.3,24.2,21.1,19.0,15.7,0.31,https://www.law.cornell.edu/regulations/mississippi/39-Miss-Code-R-SS-3-1-8
+Missouri,above 95°F or heat index above 105°F (06-01 to 09-30 only),all,Where electricity or gas is the source of cooling; investor-owned utilities,primary,10.8,13.4,5.9,12.9,3.3,5.9,0.0,0.44,https://psc.mo.gov/CMSInternetData/ConsumerInformation/Hot%20Weather%20Law.pdf
+Montana,No hot-weather rule,,,no rule: two compilations agree,0.0,2.4,2.4,9.8,9.8,0.0,0.0,0.54,https://liheapch.acf.gov/Disconnect/disconnect.htm
+Nebraska,No hot-weather rule,,,no rule: own code,0.0,8.2,8.2,10.7,10.7,6.4,6.4,0.62,https://nebraskalegislature.gov/laws/statutes.php?statute=70-1605
+Nevada,at or above 105°F,all,"Lower thresholds (95, 100 or 103 degrees) apply to elderly or disabled customers covered by NAC 704.390",primary,38.5,15.9,2.0,93.7,55.2,8.1,0.1,0.94,https://www.law.cornell.edu/regulations/nevada/NAC-704-375
+New Hampshire,No hot-weather rule,,,no rule: two compilations agree,0.0,6.4,6.4,3.2,3.2,0.3,0.3,0.81,https://liheapch.acf.gov/Disconnect/disconnect.htm
+New Jersey,at or above 90°F,all,,primary,35.8,11.0,0.7,5.2,0.0,1.4,0.0,0.44,https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-14-3-3A-2
+New Mexico,No hot-weather rule,,,no rule: own code,0.0,4.6,4.6,29.2,29.2,0.1,0.1,0.62,https://www.srca.nm.gov/parts/title17/17.005.0410.html
+New York,heat index at or above 90°F,all,"Major electric utilities; adopted March 2026; read from the commission announcement, not the order. Heat-island areas get two extra days, not scored. The federal clearinghouse lists New York as having no rule",secondary,24.7,11.3,0.2,3.0,0.0,0.4,0.0,0.49,https://dps.ny.gov/news/psc-announces-extreme-heat-protections-consumers
+North Carolina,No hot-weather rule,,,no rule: own code,0.0,4.6,4.6,12.4,12.4,3.0,3.0,0.34,https://www.ncuc.gov/ncrules/Chapter12.pdf
+North Dakota,No hot-weather rule,,,no rule: two compilations agree,0.0,1.2,1.2,4.4,4.4,0.5,0.5,0.6,https://liheapch.acf.gov/Disconnect/disconnect.htm
+Ohio,No hot-weather rule,,,no rule: own code,0.0,3.2,3.2,1.0,1.0,0.4,0.4,0.38,https://www.law.cornell.edu/regulations/ohio/Ohio-Admin-Code-4901-1-18-06
+Oklahoma,heat index at or above 101°F,all,Where electric service is used for cooling,primary,33.6,21.5,1.9,37.6,9.9,16.7,0.0,0.51,https://www.law.cornell.edu/regulations/oklahoma/OAC-165-35-21-10
+Oregon,"weather-service heat advisory, warning or watch",all,Text read is a temporary version of the rule effective to October 2025; the federal clearinghouse lists Oregon as having no rule,primary,1.9,1.0,0.0,9.8,8.9,0.3,0.3,0.61,https://www.law.cornell.edu/regulations/oregon/Or-Admin-Code-SS-860-021-0407
+Pennsylvania,No hot-weather rule,,,no rule: news report,0.0,9.4,9.4,4.5,4.5,1.1,1.1,0.38,https://whyy.org/articles/is-it-time-for-pa-to-ban-summer-utility-shutoffs/
+Rhode Island,weather-service heat advisory or warning,all,,primary,8.1,7.2,0.0,1.5,0.2,0.3,0.0,1.0,https://ripuc.ri.gov/sites/g/files/xkgbur841/files/rulesregs/commrules/810-RICR-10-00-1_Termination.pdf
+South Carolina,No hot-weather rule,,,no rule: two compilations agree,0.0,1.9,1.9,14.5,14.5,5.3,5.3,0.4,https://liheapch.acf.gov/Disconnect/disconnect.htm
+South Dakota,No hot-weather rule,,,no rule: two compilations agree,0.0,4.6,4.6,6.8,6.8,1.4,1.4,0.5,https://liheapch.acf.gov/Disconnect/disconnect.htm
+Tennessee,No hot-weather rule,,,no rule: own code,0.0,8.4,8.4,16.6,16.6,6.6,6.6,0.41,https://www.law.cornell.edu/regulations/tennessee/Tenn-Comp-R-Regs-1220-04-04-.19
+Texas,weather-service heat advisory or warning,all,"Rule says heat advisory in any county of the utility's territory; scored on the customer's own zone, so this undercounts",primary,26.5,18.3,0.0,64.4,42.1,20.7,6.9,0.44,https://www.puc.texas.gov/agency/rulesnlaws/subrules/electric/25.29/25.29.pdf
+Utah,No hot-weather rule,,,no rule: own code,0.0,4.5,4.5,35.5,35.5,0.1,0.1,0.81,https://www.law.cornell.edu/regulations/utah/Utah-Admin-Code-R746-200-7
+Vermont,No hot-weather rule,,,no rule: two compilations agree,0.0,3.5,3.5,1.0,1.0,0.0,0.0,0.62,https://liheapch.acf.gov/Disconnect/disconnect.htm
+Virginia,at or above 92°F,all,,primary,18.9,4.9,0.2,7.9,0.0,5.2,0.4,0.33,https://law.lis.virginia.gov/vacode/title56/chapter10/section56-245.1:3/
+Washington,"weather-service heat advisory, warning or watch",all,,primary,1.0,1.0,0.0,3.2,2.4,0.1,0.1,0.66,https://app.leg.wa.gov/rcw/default.aspx?cite=80.28.010
+West Virginia,No hot-weather rule,,,no rule: news report,0.0,4.1,4.1,2.3,2.3,0.2,0.2,0.33,https://legalaidwv.org/legal-information/public-utilities-deposits-shut-offs-and-reconnections/
+Wisconsin,weather-service heat advisory or warning,all,,primary,2.5,2.5,0.0,0.6,0.2,0.6,0.0,0.4,https://docs.legis.wisconsin.gov/code/admin_code/psc/113/iii/0304
+Wyoming,No hot-weather rule,,,no rule: two compilations agree,0.0,0.3,0.3,6.4,6.4,0.0,0.0,0.54,https://liheapch.acf.gov/Disconnect/disconnect.htm

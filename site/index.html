@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>When it is dangerously hot, can your power be cut off?</title>
+<style>
+  :root { --bg:#faf8f5; --fg:#1b1a18; --muted:#66625b; --line:#dcd6cc; --card:#fff; --open:#c0391b; --safe:#2c6e8f; --none:#8a8378; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#141312; --fg:#ece8e1; --muted:#a39d93; --line:#34302b; --card:#1d1b19; --open:#ff7a5c; --safe:#6fb9d9; --none:#8f887d; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif; }
+  main { max-width:960px; margin:0 auto; padding:24px 16px 64px; }
+  h1 { font-size:1.9rem; line-height:1.2; margin:0 0 8px; }
+  h2 { font-size:1.25rem; margin:40px 0 8px; }
+  p, li { max-width:68ch; }
+  .lede, .muted { color:var(--muted); }
+  .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; margin:18px 0; }
+  .stat { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:12px; }
+  .stat b { display:block; font-size:1.7rem; font-variant-numeric:tabular-nums; }
+  .stat span { color:var(--muted); font-size:.86rem; }
+  .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:4px; max-width:620px; margin:14px 0; }
+  .tile { aspect-ratio:1; border-radius:5px; display:flex; flex-direction:column; align-items:center; justify-content:center; font-size:.72rem; font-weight:600; color:#fff; cursor:pointer; border:0; padding:0; }
+  .tile small { font-weight:400; font-size:.62rem; opacity:.95; }
+  .legend { display:flex; flex-wrap:wrap; gap:6px 18px; font-size:.85rem; color:var(--muted); }
+  .legend i { display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:5px; vertical-align:-1px; }
+  .controls { display:flex; flex-wrap:wrap; gap:10px 20px; align-items:center; margin:10px 0; }
+  select { font:inherit; padding:6px 8px; border:1px solid var(--line); border-radius:6px; background:var(--card); color:var(--fg); }
+  .scroll { overflow-x:auto; border:1px solid var(--line); border-radius:8px; background:var(--card); }
+  table { border-collapse:collapse; width:100%; min-width:760px; font-size:.9rem; font-variant-numeric:tabular-nums; }
+  th, td { padding:7px 10px; text-align:right; border-bottom:1px solid var(--line); vertical-align:top; }
+  th:nth-child(-n+2), td:nth-child(-n+2) { text-align:left; }
+  tr.sel td { background:color-mix(in srgb, var(--safe) 12%, transparent); }
+  .bar { display:flex; height:10px; width:150px; border-radius:5px; overflow:hidden; background:var(--line); }
+  .bar .o { background:var(--open); } .bar .s { background:var(--safe); }
+  .tag { font-size:.72rem; padding:1px 6px; border-radius:10px; border:1px solid var(--line); color:var(--muted); white-space:nowrap; }
+  #detail { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:14px 16px; margin:14px 0; }
+  #detail h3 { margin:0 0 6px; }
+  blockquote { margin:8px 0; padding:4px 12px; border-left:3px solid var(--line); color:var(--muted); }
+  a { color:var(--safe); }
+</style>
+</head>
+<body>
+<main>
+  <h1>When it is dangerously hot, can your power be cut off?</h1>
+  <p class="lede">Some US states bar utilities from disconnecting a household for an unpaid bill during extreme heat. This page counts, state by state, how many of the days the National Weather Service called dangerously hot were actually covered by the state's rule, using each state's own legal text and ten years of weather.</p>
+
+  <div class="stats">
+    <div class="stat"><b id="n-none">…</b><span>of <span id="n-all"></span> states and DC have no hot-weather shut-off rule at all</span></div>
+    <div class="stat"><b id="n-half">…</b><span>states with a rule leave at least half of their heat-alert days uncovered</span></div>
+    <div class="stat"><b id="n-hotnone">…</b><span>no-rule states get more heat-alert days a year than the typical state with a rule</span></div>
+    <div class="stat"><b id="n-subset">…</b><span>states' rules cover only some customers, such as the elderly</span></div>
+  </div>
+
+  <h2>Uncovered heat-alert days a year</h2>
+  <p class="muted"><small>Each square is a state. The number is how many days a year, on average from 2015 to 2024, the weather service had a heat advisory or warning out and no shut-off rule was in force for an ordinary household. Click a square for the rule.</small></p>
+  <div class="grid" id="grid"></div>
+  <div class="legend">
+    <span><i style="background:var(--safe)"></i>a rule covers at least nine alert days in ten</span>
+    <span><i style="background:var(--open)"></i>more uncovered days, deeper red</span>
+    <span><i style="background:var(--none)"></i>few uncovered days</span>
+  </div>
+
+  <div id="detail"><span class="muted">Click a state.</span></div>
+
+  <h2>Every state</h2>
+  <div class="controls">
+    <label>Sort by <select id="sort">
+      <option value="alert_open">uncovered alert days</option>
+      <option value="alert">alert days</option>
+      <option value="on">days the rule is in force</option>
+      <option value="hot95">days at or above 95°F</option>
+      <option value="state">name</option>
+    </select></label>
+    <label>Show <select id="show">
+      <option value="all">all states</option>
+      <option value="rule">states with a rule</option>
+      <option value="none">states with no rule</option>
+    </select></label>
+  </div>
+  <div class="scroll"><table>
+    <thead><tr><th>State</th><th>Rule</th><th>Days in force</th><th>Alert days</th><th>Uncovered</th><th>Covered vs uncovered</th><th>Days ≥ 95°F</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table></div>
+
+  <h2>How this was done</h2>
+  <ul>
+    <li><b>Rules.</b> Each state's hot-weather rule was read from its statute, regulation or commission order and coded by hand: the trigger (a temperature, a heat index, or a weather-service alert), how far ahead the forecast looks, the season, and who is covered. The source and the quoted text are shown for every state. Where only a secondary source was read, the state is marked.</li>
+    <li><b>Weather.</b> Daily maximum temperature and heat index from the nearest long-running airport station to the population centre of each state's five most populous counties, 2015 to 2024, weighted by county population.</li>
+    <li><b>Dangerous days.</b> Days when the National Weather Service had a heat advisory or (excessive) heat warning out for that county's forecast zone. This uses the weather service's own local definition of dangerous heat, which differs by region.</li>
+    <li><b>Covered.</b> A dangerous day is covered if the state's rule, as written today, would have barred a shut-off on it.</li>
+  </ul>
+
+  <h2>Limits</h2>
+  <ul>
+    <li><b>Observed weather stands in for forecasts.</b> Rules act on forecasts, which can miss in either direction.</li>
+    <li><b>Today's rules, past weather.</b> Several rules changed between 2023 and 2026.</li>
+    <li><b>Legal protection is not the same as what happened.</b> This does not count actual disconnections.</li>
+    <li><b>Many rules reach only regulated utilities.</b> Customers of cooperatives and city-owned utilities are often outside them.</li>
+    <li><b>Five counties per state,</b> measured at airports. Rural areas and neighbourhood heat are under-represented.</li>
+    <li><b>The list of states with no rule is the weakest input.</b> A state is shown with no rule only where two independent compilations agree. The federal table alone wrongly lists Maine, Minnesota, New York and Oregon as having none.</li>
+    <li><b>Texas is undercounted</b> and <b>Arizona is scored on its temperature option</b>; see the state notes.</li>
+    <li><b>This is a student project.</b> It is not legal advice and has not been reviewed by a lawyer or a utility regulator.</li>
+  </ul>
+
+  <h2>Sources</h2>
+  <p>State statutes, regulations and commission orders (linked per state). National Weather Service alert history and airport observations via the Iowa Environmental Mesonet. Forecast zones from api.weather.gov. County populations from the 2020 Census. The list of states with no rule is where the LIHEAP Clearinghouse (US Department of Health and Human Services) and ElectricRates.org's 2026 state table agree. Every number on this page is computed in the browser from <code>data.js</code>, which <code>build.py</code> generates.</p>
+</main>
+
+<script src="data.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+// for an ordinary household: a rule that covers only some customers leaves every alert day uncovered
+const open = s => s.covers === "all" ? s.alert_open : s.alert;
+const GRID = {ME:[0,11],VT:[1,10],NH:[1,11],WA:[2,1],ID:[2,2],MT:[2,3],ND:[2,4],MN:[2,5],IL:[2,6],WI:[2,7],MI:[2,8],NY:[2,9],MA:[2,10],RI:[2,11],
+  OR:[3,1],NV:[3,2],WY:[3,3],SD:[3,4],IA:[3,5],IN:[3,6],OH:[3,7],PA:[3,8],NJ:[3,9],CT:[3,10],
+  CA:[4,1],UT:[4,2],CO:[4,3],NE:[4,4],MO:[4,5],KY:[4,6],WV:[4,7],VA:[4,8],MD:[4,9],DE:[4,10],
+  AZ:[5,2],NM:[5,3],KS:[5,4],AR:[5,5],TN:[5,6],NC:[5,7],SC:[5,8],DC:[5,9],
+  OK:[6,4],LA:[6,5],MS:[6,6],AL:[6,7],GA:[6,8],TX:[7,4],FL:[7,9]};
+
+const ruled = STATES.filter(s => s.covers !== "none"), none = STATES.filter(s => s.covers === "none");
+const full = ruled.filter(s => s.covers === "all");
+const median = v => { const a = [...v].sort((x, y) => x - y), m = a.length >> 1; return a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2; };
+$("n-all").textContent = STATES.length - 1;
+$("n-none").textContent = none.length;
+$("n-half").textContent = full.filter(s => s.alert >= 0.5 && s.alert_open / s.alert >= 0.5).length;
+$("n-hotnone").textContent = none.filter(s => s.alert > median(full.map(s => s.alert))).length;
+$("n-subset").textContent = ruled.length - full.length;
+
+const maxOpen = Math.max(...STATES.map(open));
+function colour(s) {                                 // blue: rule covers nearly every alert day; red deepens with uncovered days
+  if (s.covers === "all" && open(s) <= 0.1 * s.alert) return "var(--safe)";
+  return `color-mix(in srgb, var(--open) ${Math.round(25 + 75 * open(s) / maxOpen)}%, var(--none))`;
+}
+$("grid").innerHTML = STATES.map(s => {
+  const [r, c] = GRID[s.abbr];
+  return `<button class="tile" style="grid-row:${r + 1};grid-column:${c + 1};background:${colour(s)}" data-s="${s.abbr}" title="${esc(s.state)}">${s.abbr}<small>${open(s).toFixed(0)}</small></button>`;
+}).join("");
+
+let selected = null;
+function detail(abbr) {
+  selected = abbr;
+  const s = STATES.find(x => x.abbr === abbr);
+  const who = s.covers === "subset" ? `<p><b>Covers only some customers.</b> ${esc(s.note)}. Everyone else is unprotected on all ${s.alert.toFixed(1)} alert days.</p>`
+            : s.note ? `<p class="muted">${esc(s.note)}.</p>` : "";
+  $("detail").innerHTML = `<h3>${esc(s.state)}</h3>
+    <p><b>${esc(s.rule)}</b></p>${who}
+    <p>${s.alert.toFixed(1)} heat-alert days a year, of which <b>${open(s).toFixed(1)}</b> are not covered for an ordinary household. ${s.covers === "none" ? "" : `The rule is in force ${s.on.toFixed(1)} days a year.`} ${s.hot95.toFixed(1)} days a year reach 95°F; ${s.hi105.toFixed(1)} reach a heat index of 105°F.</p>
+    ${s.quote ? `<blockquote>${esc(s.quote)}</blockquote>` : ""}
+    <p class="muted"><small>${{primary: "Read from the state's own legal text.", secondary: "Read from a secondary source, not the legal text itself.", "own code": "No rule: checked against the state's own code.", "own code (one section)": "No rule: one section of the state's termination rules was checked.", "regulator page": "No rule: checked against the state regulator's own list of protections.", "news report": "No rule: per a news report."}[s.verified] || "Two independent compilations list no hot-weather rule; not confirmed from the state's own code."} <a href="${esc(s.source)}" rel="noopener">Source</a></small></p>`;
+  render();
+}
+function render() {
+  const key = $("sort").value, show = $("show").value;
+  const val = s => key === "alert_open" ? open(s) : s[key];
+  const list = STATES.filter(s => show === "all" || (show === "none") === (s.covers === "none"))
+    .sort((a, b) => key === "state" ? a.state.localeCompare(b.state) : val(b) - val(a));
+  $("rows").innerHTML = list.map(s => {
+    const o = open(s), w = s.alert ? 150 * s.alert / Math.max(...STATES.map(x => x.alert)) : 0;
+    return `<tr class="${s.abbr === selected ? "sel" : ""}" data-s="${s.abbr}" style="cursor:pointer">
+      <td>${esc(s.state)}</td><td>${esc(s.rule)}${s.covers === "subset" ? ' <span class="tag">some customers only</span>' : ""}${s.verified === "secondary" ? ' <span class="tag">secondary source</span>' : ""}</td>
+      <td>${s.covers === "none" ? "–" : s.on.toFixed(1)}</td><td>${s.alert.toFixed(1)}</td><td><b>${o.toFixed(1)}</b></td>
+      <td><div class="bar" style="width:${w.toFixed(0)}px" title="${(s.alert - o).toFixed(1)} covered, ${o.toFixed(1)} uncovered"><div class="s" style="width:${s.alert ? 100 * (s.alert - o) / s.alert : 0}%"></div><div class="o" style="width:${s.alert ? 100 * o / s.alert : 0}%"></div></div></td>
+      <td>${s.hot95.toFixed(1)}</td></tr>`;
+  }).join("");
+}
+document.addEventListener("click", e => { const t = e.target.closest("[data-s]"); if (t) detail(t.dataset.s); });
+$("sort").addEventListener("change", render);
+$("show").addEventListener("change", render);
+render();
+</script>
+</body>
+</html>

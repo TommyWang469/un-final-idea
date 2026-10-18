@@ -1,0 +1,52 @@
+state,hot_date_based,hot_temperature_based,extreme_weather
+Alabama,No,No,No
+Alaska,No,No,No
+Arizona,Yes Criteria: June 1 - October 15,Yes Criteria: 95°F and above,"The rules allow electric utilities to choose between two disconnection options during periods of extreme weather: if the forecasted temperature is above 95°F or below 32°F, or they can choose to continue utilizing the June 1 through October 15 disconnection moratorium period."
+Arkansas,No,Yes Criteria: 95°F and above,No
+California,No,Yes Criteria: Forecast to be 100°F or above within next 72 hours.,No
+Colorado,No,Yes Criteria: 95°F and above,No
+Connecticut,No,No,No
+Delaware,Yes Criteria: June 30 - September 30,Yes Criteria: 105°F and above,No
+District of Columbia,No,Yes Criteria: 95°F and above,No
+Florida,No,No,No
+Georgia,"Yes Criteria: ""Summer months"" (no specific dates given)",Yes Criteria 98°F and above,No
+Hawaii,No,No,No
+Idaho,No,No,No
+Illinois,Yes Criteria: Summer (no specific dates indicated),Yes Criteria: 95°F and above,No
+Indiana,No,Yes Criteria: Within 48 hours of the National Weather Service forecasting a heat index of at least 95 degrees Fahrenheit.,No
+Iowa,No,No,No
+Kansas,No,No,No
+Kentucky,No,No,No
+Louisiana,No,Yes Criteria: When the national weather service issues a heat warning in the summer.,No
+Maine,No,No,No
+Maryland,No,Yes Criteria 95°F and above,No
+Massachusetts,No,No,No
+Michigan,No,No,No
+Minnesota,No,No,No
+Mississippi,No,Yes Criteria: No electric disconnects when there is an excessive heat warning.,No
+Missouri,No,Yes Criteria: 105°F and above,No
+Montana,No,No,No
+Nebraska,No,No,No
+Nevada,No,"Yes Criteria: The temperatures at which service cannot be disconnected depend on the region within the state and if the customer is elderly disabled. In northern Nevada (Sierra Pacific Power Company): Elderly or disabled - 95°F or higher Nonelderly/disabled - 105°F or higher In southern Nevada (Nevada Power Company): Elderly/disabled and living in a mobile home built before Jan 1, 2000: 95°F or higher Elderly/disabled NOT living in a mobile home built before Jan 1, 2000: 103°F or higher Nonelderly/disabled - 95°F or higher",No
+New Hampshire,No,No,No
+New Jersey,No,Yes Criteria: 90°F or above,No
+New Mexico,No,No,No
+New York,No,No,No
+North Carolina,No,No,No
+North Dakota,No,No,No
+Ohio,No,No,No
+Oklahoma,No,Yes Criteria: No disconnects when forecast to be over 101°F,No
+Oregon,No,No,Yes Criteria: No disconnects during wildfire evacuations or on days where the air quality index is 100 or greater
+Pennsylvania,No,No,No
+Rhode Island,No,Yes Criteria: No disconnects for any customers during a heat advisory or excessive heat warning,No
+South Carolina,No,No,No
+South Dakota,No,No,No
+Tennessee,No,No,See Additional Disconnect Policy Information below
+Texas,No,Yes Criteria:No disconnects when a heat advisory is in effect or has been in effect within the last 2 days.,No
+Utah,No,No,No
+Vermont,No,No,No
+Virginia,No,Yes Criteria: Forecast to be above 92°F within 24 hours following a scheduled disconnection.,No
+Washington,No,Yes Criteria: No disconnections on days for which the national weather service has issued a heat-related alert for the area in which the customer resides.,No
+West Virginia,No,No,No
+Wisconsin,No,"Yes Criteria: No disconnects when a heat advisory, heat warning, or heat emergency issued by the national weather service is in effect.",No
+Wyoming,No,No,No

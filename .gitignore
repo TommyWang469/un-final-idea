@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.DS_Store
+.claude/
+# Weather caches (about 150 MB); build.py re-downloads them if missing
+raw/asos/
+raw/alerts/
+raw/stations/
