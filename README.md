@@ -41,8 +41,8 @@ for this project, so look before the guide mentions one.
 **Ground rules** (carried over from `un-brainstorm`):
 - **Never invent a number.** Every figure traces to `build.py` output.
 - **Never inflate a role or a team's size.**
-- **Don't found anything.** Chapters can run without incorporation. Incorporate only if something
-  concrete requires it.
+- **This is a nonprofit project** (Tommy's decision, 2026-10-17). It replaces the old
+  `un-brainstorm` rule "don't found anything". How to set it up is covered in `nonprofit-playbook.md`.
 - **Stays smaller than the hurdle AI**, which is the ISEF project. Chapters are the part most
   likely to grow without limit, so they come last.
 - **No claim about a UN conference** until a specific named event has accepted the project.
