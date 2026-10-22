@@ -42,7 +42,8 @@ for this project, so look before the guide mentions one.
 - **Never invent a number.** Every figure traces to `build.py` output.
 - **Never inflate a role or a team's size.**
 - **This is a nonprofit project** (Tommy's decision, 2026-10-17). It replaces the old
-  `un-brainstorm` rule "don't found anything". How to set it up is covered in `nonprofit-playbook.md`.
+  `un-brainstorm` rule "don't found anything". How to set it up is covered in `nonprofit-playbook.md`. Whether the problem is real is
+  answered in `is-it-real.md`.
 - **Stays smaller than the hurdle AI**, which is the ISEF project. Chapters are the part most
   likely to grow without limit, so they come last.
 - **No claim about a UN conference** until a specific named event has accepted the project.
