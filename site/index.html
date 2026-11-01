@@ -7,319 +7,105 @@
 <meta name="google-site-verification" content="8jBbVbUQbBhJqE0kMLwIPE77QKK4b8HMX7MZ5i26LG4">
 <meta name="description" content="Can your electricity be cut off for an unpaid bill in dangerous heat? Check your state's rule and how many heat-alert days it covers, across 48 states and DC.">
 <meta property="og:title" content="Heat Shut-off Check">
-<meta property="og:description" content="Can your power be cut off in dangerous heat? See your state's rule and how many heat-alert days it really covers.">
+<meta property="og:description" content="Can your electricity be cut off for an unpaid bill in dangerous heat? Check your state's rule and how many heat-alert days it covers, across 48 states and DC.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23141B3C'/%3E%3Crect x='7' y='7' width='8' height='8' fill='%23FFC94D'/%3E%3Crect x='17' y='7' width='8' height='8' fill='%23343D6B'/%3E%3Crect x='7' y='17' width='8' height='8' fill='%23343D6B'/%3E%3Crect x='17' y='17' width='8' height='8' fill='%23FF6B4A'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --night:#141B3C; --night-2:#1E2750; --unlit:#343D6B; --lit:#FFC94D; --gap:#FF6B4A;
-    --paper:#F2F4FA; --ink:#141B3C; --ink-2:#4A5275; --line:#CDD3E4; --link:#2337A6; --card:#FFFFFF; --on-night:#E9ECF7; --on-night-2:#B4BBD6;
-    --display:"Bricolage Grotesque",system-ui,sans-serif; --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
-  }
-  :root[data-theme="dark"] { color-scheme:dark; }
-  * { box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
-  body { margin:0; background:var(--paper); color:var(--ink); font:1.0625rem/1.6 var(--body); }
-  .wrap { max-width:1120px; margin:0 auto; padding:0 20px; }
-  h1, h2, h3 { font-family:var(--display); font-weight:800; line-height:1.06; letter-spacing:-.02em; margin:0; }
-  h2 { font-size:clamp(1.8rem,4.5vw,2.75rem); max-width:22ch; }
-  h3 { font-size:1.3rem; line-height:1.2; letter-spacing:-.01em; }
-  p, li { max-width:68ch; }
-  a { color:var(--link); text-underline-offset:2px; }
-  :focus-visible { outline:3px solid var(--gap); outline-offset:2px; }
-  section { padding:72px 0; }
-  .skip { position:absolute; left:-999px; }
-  .skip:focus { left:12px; top:12px; background:#fff; padding:8px 12px; z-index:9; }
-
-  /* hero: the country as one apartment block at night */
-  .hero { background:var(--night); color:var(--on-night); padding:40px 0 56px; }
-  .hero-grid { display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:48px; align-items:center; }
-  h1 { font-size:clamp(2.6rem,6.4vw,4.6rem); font-weight:800; color:#fff; }
-  .answer { font-size:1.3rem; line-height:1.4; margin:22px 0 0; color:var(--on-night); }
-  .answer b { color:#fff; }
-  .picker { margin-top:30px; }
-  .picker label { display:block; font-weight:700; margin-bottom:6px; color:#fff; }
-  select { font:inherit; padding:10px 12px; border-radius:4px; border:2px solid var(--line); background:var(--card); color:var(--ink); max-width:100%; }
-  .picker select { width:100%; max-width:340px; font-size:1.1rem; border-color:var(--lit); }
-
-  .block { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:5px; }
-  .win { aspect-ratio:1; border:0; padding:0; border-radius:3px 3px 1px 1px; cursor:pointer; font:700 .78rem/1.05 var(--body); display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; transition:background-color .5s, color .5s, transform .12s; }
-  .win small { font-weight:400; font-size:.68rem; }
-  .win:hover { transform:scale(1.1); z-index:1; }
-  .win[aria-pressed="true"] { outline:3px solid #fff; outline-offset:1px; z-index:2; }
-  .win.lit { background:var(--lit); color:var(--night); box-shadow:0 0 16px rgba(255,201,77,.4); }
-  .win.gap { background:var(--gap); color:var(--night); box-shadow:0 0 12px rgba(255,107,74,.3); }
-  .win.dark { background:var(--unlit); color:var(--on-night); }
-  .pre .win:not(.off) { background:var(--lit); color:var(--night); box-shadow:0 0 16px rgba(255,201,77,.4); }
-  .key { display:flex; flex-wrap:wrap; gap:6px 20px; margin:16px 0 0; padding:0; list-style:none; font-size:.92rem; color:var(--on-night-2); }
-  .key li { display:flex; align-items:center; gap:7px; }
-  .key i { width:14px; height:14px; border-radius:2px; flex:none; }
-  .hint { font-size:.92rem; color:var(--on-night-2); margin:8px 0 0; }
-
-  /* your state */
-  #detail { background:var(--night-2); color:var(--on-night); border-radius:6px; padding:22px 24px; margin-top:36px; border-left:6px solid var(--unlit); scroll-margin-top:16px; }
-  #detail.lit { border-left-color:var(--lit); } #detail.gap { border-left-color:var(--gap); }
-  #detail h3 { color:#fff; font-size:1.7rem; }
-  #detail a { color:var(--lit); }
-  #detail p { margin:10px 0 0; }
-  #detail .big { font-size:1.15rem; }
-  blockquote { margin:12px 0 0; padding:2px 0 2px 14px; border-left:2px solid var(--unlit); color:var(--on-night-2); max-width:68ch; }
-  .fine { font-size:.9rem; color:var(--on-night-2); }
-
-  /* facts */
-  .facts { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:36px; margin-top:36px; }
-  .fact b { display:block; font:800 clamp(2rem,4.4vw,3rem)/1.05 var(--display); letter-spacing:-.02em; margin-bottom:6px; }
-  .cases { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:36px; margin-top:44px; padding-top:32px; border-top:1px solid var(--line); }
-  .cases p { margin:8px 0 0; }
-
-  /* fixes */
-  .tint { background:#E3E7F4; }
-  .fix { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,2fr); gap:8px 40px; padding:26px 0; border-top:1px solid #B8C0D8; }
-  .fix:first-of-type { margin-top:30px; }
-  .fix p { margin:0; }
-  .before { margin-top:12px; font-size:.98rem; }
-
-  /* table */
-  .controls { display:flex; flex-wrap:wrap; gap:12px 24px; margin:24px 0 14px; }
-  .scroll { overflow-x:auto; background:var(--card); border:1px solid var(--line); border-radius:6px; }
-  table { border-collapse:collapse; width:100%; min-width:760px; font-size:.96rem; font-variant-numeric:tabular-nums; }
-  th, td { padding:9px 12px; text-align:right; border-bottom:1px solid var(--line); vertical-align:top; }
-  th:nth-child(-n+2), td:nth-child(-n+2) { text-align:left; }
-  th { background:#E3E7F4; }
-  tbody tr { cursor:pointer; } tbody tr:hover td { background:#F2F4FA; }
-  tr.sel td { background:#FFF3D1; }
-  tr:last-child td { border-bottom:0; }
-  .bar { display:flex; height:10px; border-radius:2px; overflow:hidden; min-width:2px; margin-top:6px; }
-  .bar .s { background:#D69A11; } .bar .o { background:#D9411E; }
-  .tag { font-size:.78rem; padding:0 6px; border-radius:3px; background:#E3E7F4; color:var(--ink-2); white-space:nowrap; }
-
-  /* act */
-  .act { background:var(--night); color:var(--on-night); }
-  .act h2 { color:#fff; }
-  .act a { color:var(--lit); }
-  .act ul { padding-left:20px; margin:20px 0 0; } .act li { margin-top:10px; }
-
-  details { border-top:1px solid var(--line); padding:14px 0; }
-  details:last-of-type { border-bottom:1px solid var(--line); }
-  summary { font:800 1.2rem var(--display); cursor:pointer; }
-  details ul { padding-left:20px; }
-  footer { background:var(--night); color:var(--on-night-2); padding:28px 0; font-size:.92rem; }
-  footer a { color:var(--lit); }
-
-  @media (max-width:860px) {
-    .hero-grid, .facts, .cases, .fix { grid-template-columns:minmax(0,1fr); }
-    .hero-grid { gap:30px; }
-    .block { gap:3px; }
-    .win { font-size:.62rem; } .win small { display:none; }
-    section { padding:52px 0; }
-    .facts { gap:24px; }
-  }
-  @media (prefers-reduced-motion:reduce) {
-    html { scroll-behavior:auto; }
-    .win { transition:none; }
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<a class="skip" href="#table">Skip to the full table</a>
+<a class="skip" href="#main">Skip to content</a>
+<div class="bar-top"><div class="wrap">
+  <a class="brand" href="index.html">Heat Shut-off Check</a>
+  <nav aria-label="Main"><ul>
+    <li><a href="index.html" aria-current="page">Check your state</a></li>
+    <li><a href="findings.html">Findings</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="act.html">Take action</a></li>
+    <li><a href="method.html">How it works</a></li>
+  </ul></nav>
+</div></div>
 
-<header class="hero">
+<header class="hero" id="main">
   <div class="wrap">
     <div class="hero-grid">
       <div>
         <h1>When it's dangerously hot, can your power be cut off?</h1>
         <p class="answer">In <b><span id="n-none">24</span> of 48 states and DC</b>, no hot-weather rule stops it.</p>
-        <div class="picker">
-          <label for="pick">Check your state</label>
-          <select id="pick"><option value="">Choose a state</option></select>
-        </div>
+        <form class="find" id="find">
+          <label for="q">Check your state</label>
+          <div class="find-row">
+            <input type="search" id="q" list="states" placeholder="State name or ZIP code" autocomplete="off">
+            <datalist id="states"></datalist>
+            <button class="go" type="submit">Check</button>
+          </div>
+          <p id="msg" role="status"></p>
+        </form>
       </div>
       <div>
-        <div class="block pre" id="grid" role="group" aria-label="Map of states. Choose a state to see its rule."></div>
+        <div class="views" role="group" aria-label="Choose a view">
+          <button type="button" data-view="map" aria-pressed="true">Map</button>
+          <button type="button" data-view="win" aria-pressed="false">Windows</button>
+        </div>
+        <div id="stage" class="pre">
+          <div id="mapView"></div>
+          <div id="winView" class="block" role="group" aria-label="Grid of states. Choose a state to see its rule." hidden></div>
+        </div>
         <ul class="key">
           <li><i style="background:var(--lit)"></i>Rule covers at least 9 in 10 heat-alert days</li>
           <li><i style="background:var(--gap)"></i>Rule has gaps, or covers only some customers</li>
           <li><i style="background:var(--unlit)"></i>No rule</li>
         </ul>
-        <p class="hint">The number on each square is uncovered heat-alert days a year for an ordinary household, 2015 to 2024.</p>
       </div>
     </div>
     <div id="detail" aria-live="polite" tabindex="-1" hidden></div>
   </div>
 </header>
+<div id="tip" hidden></div>
 
 <main>
-  <section>
-    <div class="wrap">
-      <h2>Without a rule, shut-offs continue through summer</h2>
-      <p>A household that can't pay can lose electricity, and with it the air conditioning or fan. Some states bar this in extreme heat. Most coverage stops at counting those states. This site asks a harder question: on the days the National Weather Service called the heat dangerous, was the rule actually in force?</p>
-      <div class="facts">
-        <div class="fact"><b>13.4 million</b>electric disconnections in the US in 2024. One home can be counted more than once.</div>
-        <div class="fact"><b>1,412,514</b>of those fell in June to August in the 24 states that have no hot-weather rule today.</div>
-        <div class="fact"><b>3,499</b>June to August shut-offs in Arizona, which has a summer rule, against 29,023 in December alone.</div>
-      </div>
-      <p class="before">National shut-offs do not peak in summer: July 2024 was the lowest month, with 967,012. Nobody counts how many people are harmed by heat-wave shut-offs. People have died, though. Source for all counts: <a href="https://www.eia.gov/analysis/requests/residential/utility/" rel="noopener">EIA 2024 Residential Utility Disconnections Report</a>.</p>
-      <div class="cases">
-        <div><h3>A $51 balance on a 107°F day</h3><p>In September 2018 an Arizona utility cut power to a 72-year-old woman. The medical examiner found environmental heat exposure combined with heart disease. <a href="https://apnews.com/article/arizona-heat-death-legacy-3fce53af423293d9fb15d7889dee9e13" rel="noopener">Associated Press</a></p></div>
-        <div><h3>A rule on paper, dropped three days earlier</h3><p>In May 2024 the same utility disconnected an 82-year-old customer on a 99°F day, three days after dropping its temperature policy. She was found dead six days later. The utility agreed to a $7 million settlement in 2026. <a href="https://courthousenews.com/settlement-bars-arizona-utility-from-extreme-heat-disconnections/" rel="noopener">Courthouse News</a></p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="tint">
-    <div class="wrap">
-      <h2>Three different problems need three different fixes</h2>
-      <div class="fix"><h3>Adopt a rule</h3><p><span id="fix-none"></span></p></div>
-      <div class="fix"><h3>Change the trigger</h3><p>Some rules start too late. Mississippi and Delaware each leave 76% of alert days uncovered, and Missouri leaves 44%. Rules tied to weather-service advisories avoid this gap.</p></div>
-      <div class="fix"><h3>Widen who is covered</h3><p><span id="fix-subset"></span></p></div>
-      <p class="before"><b>Changing a rule works, and the gain can be measured.</b> On the same ten years of weather, California's July 2026 move from 100°F to 90°F cuts uncovered alert days from 4.0 to 1.1 a year. Illinois's move from 95°F to 90°F plus alerts cuts them from 0.9 to 0.0.</p>
-    </div>
-  </section>
-
   <section id="table">
     <div class="wrap">
       <h2>Every state</h2>
       <div class="controls">
-        <label>Sort by <select id="sort">
-          <option value="alert_open">uncovered alert days</option>
-          <option value="alert">alert days</option>
-          <option value="on">days the rule is in force</option>
-          <option value="hot95">days at or above 95°F</option>
-          <option value="state">name</option>
+        <label>Search the table <input type="text" id="tfind" placeholder="State or rule"></label>
+        <label>Protection <select id="show">
+          <option value="all">All states</option>
+          <option value="lit">Covers at least 9 in 10 alert days</option>
+          <option value="gap">Covers everyone, with gaps</option>
+          <option value="subset">Some customers only</option>
+          <option value="none">No rule</option>
         </select></label>
-        <label>Show <select id="show">
-          <option value="all">all states</option>
-          <option value="rule">states with a rule</option>
-          <option value="none">states with no rule</option>
+        <label>Rule trigger <select id="trig">
+          <option value="all">Any trigger</option>
+          <option value="temp">Temperature</option>
+          <option value="index">Heat index</option>
+          <option value="alert">Weather-service alert</option>
+        </select></label>
+        <label>Sort by <select id="sort">
+          <option value="alert_open">Uncovered alert days</option>
+          <option value="alert">Alert days</option>
+          <option value="on">Days the rule is in force</option>
+          <option value="hot95">Days at or above 95°F</option>
+          <option value="state">Name</option>
         </select></label>
       </div>
+      <p id="count" role="status"></p>
       <div class="scroll"><table>
         <thead><tr><th>State</th><th>Rule</th><th>Days in force</th><th>Alert days</th><th>Uncovered</th><th>Days ≥ 95°F</th></tr></thead>
         <tbody id="rows"></tbody>
       </table></div>
-      <p class="before">A rule tied to a weather-service alert covers alert days by design, so its zero does not prove the rule is well set. The test means most for temperature and heat-index rules.</p>
-    </div>
-  </section>
-
-  <section class="act">
-    <div class="wrap">
-      <h2>Ask the people who set these rules</h2>
-      <p>These rules are set by state legislatures and utility commissions, so that's where a request counts.</p>
-      <ul>
-        <li><a href="https://openstates.org/find_your_legislator/" rel="noopener">Find your state legislators</a> and tell them what your state's rule does, or that it has none.</li>
-        <li>Look up when your state utility commission takes public comments on shut-off rules.</li>
-        <li>If you are facing a shut-off, call your utility and ask about payment plans and assistance. This site is not legal advice, and rules change.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <h2>How this was done</h2>
-      <details open><summary>Method</summary><ul>
-        <li><b>Rules.</b> Each state's hot-weather rule was coded by hand: the trigger (a temperature, a heat index, or a weather-service alert), how far ahead the forecast looks, the season, and who is covered. The source and quoted text appear with each state. Where only a secondary source was read, the state is marked.</li>
-        <li><b>Weather.</b> Daily maximum temperature and heat index from the nearest long-running airport station to the population centre of each state's five most populous counties, 2015 to 2024, weighted by county population.</li>
-        <li><b>Dangerous days.</b> Days when the National Weather Service had a heat advisory or (excessive) heat warning out for that county's forecast zone. This uses the weather service's own local definition, which differs by region.</li>
-        <li><b>Covered.</b> A dangerous day is covered if the state's rule, as written today, would have barred a shut-off on it.</li>
-      </ul></details>
-      <details open><summary>Limits</summary><ul>
-        <li><b>This is a student project.</b> It is not legal advice and has not been reviewed by a lawyer or a utility regulator.</li>
-        <li><b>Observed weather stands in for forecasts.</b> Rules act on forecasts, which can miss in either direction.</li>
-        <li><b>Today's rules, past weather.</b> Several rules changed between 2023 and 2026. The shut-off counts above are from 2024, so some states' rules were not yet in place.</li>
-        <li><b>Legal protection is not the same as what happened.</b> The state results do not count actual disconnections.</li>
-        <li><b>Many rules reach only regulated utilities.</b> Customers of cooperatives and city-owned utilities are often outside them.</li>
-        <li><b>Five counties per state,</b> measured at airports. Rural areas and neighbourhood heat are under-represented.</li>
-        <li><b>The list of states with no rule is the weakest input.</b> A state is shown with no rule only where two independent compilations agree. The federal table alone wrongly lists Maine, Minnesota, New York and Oregon as having none.</li>
-        <li><b>Texas is undercounted.</b> Its rule triggers on an advisory anywhere in a utility's territory; this checks only the customer's own zone.</li>
-        <li><b>Arizona is scored on its temperature option.</b> A utility may instead adopt a June 1 to October 15 pause.</li>
-      </ul></details>
-      <details><summary>Sources</summary>
-        <p>State statutes, regulations and commission orders (linked per state). National Weather Service alert history and airport observations via the Iowa Environmental Mesonet. Forecast zones from api.weather.gov. County populations from the 2020 Census. The no-rule list is where the LIHEAP Clearinghouse (US Department of Health and Human Services) and ElectricRates.org's 2026 state table agree. Shut-off counts from the US Energy Information Administration.</p>
-      </details>
+      <p class="note">Figures are yearly averages for 2015 to 2024. A rule tied to a weather-service alert covers alert days by design, so its zero does not prove the rule is well set. The test means most for temperature and heat-index rules.</p>
     </div>
   </section>
 </main>
-
-<footer><div class="wrap">Covers 48 states and DC; Alaska and Hawaii are not included. <a href="https://github.com/TommyWang469/un-final-idea" rel="noopener">Data and code</a></div></footer>
-
+<footer><div class="wrap">Covers 48 states and DC; Alaska and Hawaii are not included. Student project, not legal advice. <a href="https://github.com/TommyWang469/un-final-idea" rel="noopener">Data and code</a></div></footer>
 <script src="data.js"></script>
-<script>
-const $ = id => document.getElementById(id);
-const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const list = a => a.length < 2 ? a.join("") : a.slice(0, -1).join(", ") + " and " + a[a.length - 1];
-// for an ordinary household: a rule that covers only some customers leaves every alert day uncovered
-const open = s => s.covers === "all" ? s.alert_open : s.alert;
-const kind = s => s.covers === "none" ? "dark" : s.covers === "all" && open(s) <= 0.1 * s.alert ? "lit" : "gap";
-const GRID = {ME:[0,11],VT:[1,10],NH:[1,11],WA:[2,1],ID:[2,2],MT:[2,3],ND:[2,4],MN:[2,5],IL:[2,6],WI:[2,7],MI:[2,8],NY:[2,9],MA:[2,10],RI:[2,11],
-  OR:[3,1],NV:[3,2],WY:[3,3],SD:[3,4],IA:[3,5],IN:[3,6],OH:[3,7],PA:[3,8],NJ:[3,9],CT:[3,10],
-  CA:[4,1],UT:[4,2],CO:[4,3],NE:[4,4],MO:[4,5],KY:[4,6],WV:[4,7],VA:[4,8],MD:[4,9],DE:[4,10],
-  AZ:[5,2],NM:[5,3],KS:[5,4],AR:[5,5],TN:[5,6],NC:[5,7],SC:[5,8],DC:[5,9],
-  OK:[6,4],LA:[6,5],MS:[6,6],AL:[6,7],GA:[6,8],TX:[7,4],FL:[7,9]};
-
-const none = STATES.filter(s => s.covers === "none");
-const subset = STATES.filter(s => s.covers === "subset");
-const worst = [...none].sort((a, b) => b.alert - a.alert).slice(0, 3);
-$("n-none").textContent = none.length;
-$("fix-none").textContent = `${none.length} states have no rule. The most heat-alert days among them fall in ${list(worst.map(s => `${s.state} (${s.alert.toFixed(1)} a year)`))}.`;
-$("fix-subset").textContent = `${list(subset.map(s => s.state))} protect only some customers, such as older or disabled residents or those on energy assistance. Everyone else is uncovered on every alert day.`;
-
-$("grid").innerHTML = STATES.map(s => {
-  const [r, c] = GRID[s.abbr];
-  return `<button class="win ${kind(s)}" style="grid-row:${r + 1};grid-column:${c + 1}" data-s="${s.abbr}" aria-pressed="false" aria-label="${esc(s.state)}: ${esc(s.rule)}, ${open(s).toFixed(1)} uncovered alert days a year">${s.abbr}<small>${open(s).toFixed(0)}</small></button>`;
-}).join("");
-$("pick").innerHTML += [...STATES].sort((a, b) => a.state.localeCompare(b.state)).map(s => `<option value="${s.abbr}">${esc(s.state)}</option>`).join("");
-
-// the one load moment: every window lit, then the no-rule states go dark
-const block = $("grid");
-if (matchMedia("(prefers-reduced-motion:reduce)").matches) block.classList.remove("pre");
-else {
-  const changing = [...block.children].filter(w => !w.classList.contains("lit")).sort(() => Math.random() - .5);
-  changing.forEach((w, i) => setTimeout(() => w.classList.add("off"), 700 + i * 85));
-  setTimeout(() => block.classList.remove("pre"), 700 + changing.length * 85 + 600);
-}
-
-let selected = null;
-function detail(abbr, scroll) {
-  selected = abbr;
-  const s = STATES.find(x => x.abbr === abbr), d = $("detail");
-  d.className = kind(s);
-  d.hidden = false;
-  const who = s.covers === "subset" ? `<p><b>Covers only some customers.</b> ${esc(s.note)}. Everyone else is unprotected on all ${s.alert.toFixed(1)} alert days.</p>`
-            : s.note ? `<p class="fine">${esc(s.note)}.</p>` : "";
-  const src = {primary: "Read from the state's own legal text.", secondary: "Read from a secondary source, not the legal text itself.", "own code": "No rule: checked against the state's own code.", "own code (one section)": "No rule: one section of the state's termination rules was checked.", "regulator page": "No rule: checked against the state regulator's own list of protections.", "news report": "No rule: per a news report."}[s.verified] || "Two independent compilations list no hot-weather rule; not confirmed from the state's own code.";
-  d.innerHTML = `<h3>${esc(s.state)}</h3>
-    <p class="big"><b>${esc(s.rule[0].toUpperCase() + s.rule.slice(1))}</b></p>${who}
-    <p>${s.alert.toFixed(1)} heat-alert days a year, of which <b>${open(s).toFixed(1)}</b> are not covered for an ordinary household. ${s.covers === "none" ? "" : `The rule is in force ${s.on.toFixed(1)} days a year.`} ${s.hot95.toFixed(1)} days a year reach 95°F; ${s.hi105.toFixed(1)} reach a heat index of 105°F.</p>
-    ${!s.quote ? "" : s.covers === "none" ? `<p class="fine">What the check found: ${esc(s.quote)}</p>` : `<blockquote>${esc(s.quote)}</blockquote>`}
-    <p class="fine">${src} ${/^https?:/.test(s.source) ? `<a href="${esc(s.source)}" rel="noopener">Source</a>` : ""}</p>`;
-  document.querySelectorAll(".win").forEach(w => w.setAttribute("aria-pressed", w.dataset.s === abbr));
-  $("pick").value = abbr;
-  render();
-  if (scroll) d.scrollIntoView({block:"nearest"});
-}
-function render() {
-  const key = $("sort").value, show = $("show").value, top = Math.max(...STATES.map(x => x.alert));
-  const val = s => key === "alert_open" ? open(s) : s[key];
-  const shown = STATES.filter(s => show === "all" || (show === "none") === (s.covers === "none"))
-    .sort((a, b) => key === "state" ? a.state.localeCompare(b.state) : val(b) - val(a));
-  $("rows").innerHTML = shown.map(s => {
-    const o = open(s), w = 100 * s.alert / top;
-    return `<tr class="${s.abbr === selected ? "sel" : ""}" data-s="${s.abbr}" tabindex="0">
-      <td>${esc(s.state)}</td><td>${esc(s.rule)}${s.covers === "subset" ? ' <span class="tag">some customers only</span>' : ""}${s.verified === "secondary" ? ' <span class="tag">secondary source</span>' : ""}</td>
-      <td>${s.covers === "none" ? "–" : s.on.toFixed(1)}</td><td>${s.alert.toFixed(1)}</td>
-      <td><b>${o.toFixed(1)}</b><div class="bar" style="width:${w.toFixed(0)}px" title="${(s.alert - o).toFixed(1)} covered, ${o.toFixed(1)} uncovered"><div class="s" style="width:${s.alert ? 100 * (s.alert - o) / s.alert : 0}%"></div><div class="o" style="width:${s.alert ? 100 * o / s.alert : 0}%"></div></div></td>
-      <td>${s.hot95.toFixed(1)}</td></tr>`;
-  }).join("");
-}
-document.addEventListener("click", e => { const t = e.target.closest("[data-s]"); if (t) { detail(t.dataset.s, true); if (t.tagName === "TR") $("detail").focus(); } });
-document.addEventListener("keydown", e => { if (e.key === "Enter" && e.target.tagName === "TR") { detail(e.target.dataset.s, true); $("detail").focus(); } });
-$("pick").addEventListener("change", e => { if (e.target.value) detail(e.target.value, true); else $("detail").hidden = true; });
-$("sort").addEventListener("change", render);
-$("show").addEventListener("change", render);
-render();
-</script>
+<script src="map.js"></script>
+<script src="zip.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

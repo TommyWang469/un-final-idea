@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How it works | Heat Shut-off Check</title>
+<meta name="description" content="How the Heat Shut-off Check was built: the rules, weather data, definitions, limits and sources.">
+<meta property="og:title" content="How it works | Heat Shut-off Check">
+<meta property="og:description" content="How the Heat Shut-off Check was built: the rules, weather data, definitions, limits and sources.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23141B3C'/%3E%3Crect x='7' y='7' width='8' height='8' fill='%23FFC94D'/%3E%3Crect x='17' y='7' width='8' height='8' fill='%23343D6B'/%3E%3Crect x='7' y='17' width='8' height='8' fill='%23343D6B'/%3E%3Crect x='17' y='17' width='8' height='8' fill='%23FF6B4A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="bar-top"><div class="wrap">
+  <a class="brand" href="index.html">Heat Shut-off Check</a>
+  <nav aria-label="Main"><ul>
+    <li><a href="index.html">Check your state</a></li>
+    <li><a href="findings.html">Findings</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="act.html">Take action</a></li>
+    <li><a href="method.html" aria-current="page">How it works</a></li>
+  </ul></nav>
+</div></div>
+
+<header class="page-hero" id="main"><div class="wrap">
+  <h1>How it works</h1>
+  <p>This is a student project. It is not legal advice and has not been reviewed by a lawyer or a utility regulator.</p>
+</div></header>
+<main><section><div class="wrap">
+  <details open><summary>Method</summary><ul>
+    <li><b>Rules.</b> Each state's hot-weather rule was coded by hand: the trigger (a temperature, a heat index, or a weather-service alert), how far ahead the forecast looks, the season, and who is covered. The source and quoted text appear with each state. Where only a secondary source was read, the state is marked.</li>
+    <li><b>Weather.</b> Daily maximum temperature and heat index from the nearest long-running airport station to the population centre of each state's five most populous counties, 2015 to 2024, weighted by county population.</li>
+    <li><b>Dangerous days.</b> Days when the National Weather Service had a heat advisory or (excessive) heat warning out for that county's forecast zone. This uses the weather service's own local definition, which differs by region.</li>
+    <li><b>Covered.</b> A dangerous day is covered if the state's rule, as written today, would have barred a shut-off on it.</li>
+    <li><b>ZIP search.</b> A ZIP code is matched to a state using the Census 2020 ZIP-area file. Your state's result is the same for every ZIP in it; results are not local.</li>
+  </ul></details>
+  <details open><summary>Limits</summary><ul>
+    <li><b>Observed weather stands in for forecasts.</b> Rules act on forecasts, which can miss in either direction.</li>
+    <li><b>Today's rules, past weather.</b> Several rules changed between 2023 and 2026. The shut-off counts are from 2024, so some states' rules were not yet in place.</li>
+    <li><b>Legal protection is not the same as what happened.</b> The state results do not count actual disconnections.</li>
+    <li><b>Many rules reach only regulated utilities.</b> Customers of cooperatives and city-owned utilities are often outside them.</li>
+    <li><b>Five counties per state,</b> measured at airports. Rural areas and neighbourhood heat are under-represented.</li>
+    <li><b>The list of states with no rule is the weakest input.</b> A state is shown with no rule only where two independent compilations agree. The federal table alone wrongly lists Maine, Minnesota, New York and Oregon as having none.</li>
+    <li><b>Texas is undercounted.</b> Its rule triggers on an advisory anywhere in a utility's territory; this checks only the customer's own zone.</li>
+    <li><b>Arizona is scored on its temperature option.</b> A utility may instead adopt a June 1 to October 15 pause.</li>
+  </ul></details>
+  <details open><summary>Sources</summary>
+    <p>State statutes, regulations and commission orders (linked per state). National Weather Service alert history and airport observations via the Iowa Environmental Mesonet. Forecast zones from api.weather.gov. County populations from the 2020 Census. The no-rule list is where the LIHEAP Clearinghouse (US Department of Health and Human Services) and ElectricRates.org's 2026 state table agree. Shut-off counts from the US Energy Information Administration. State outlines from the us-atlas project, built on Census boundaries.</p>
+  </details>
+</div></section></main>
+<footer><div class="wrap">Covers 48 states and DC; Alaska and Hawaii are not included. Student project, not legal advice. <a href="https://github.com/TommyWang469/un-final-idea" rel="noopener">Data and code</a></div></footer>
+
+</body>
+</html>

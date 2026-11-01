@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Findings | Heat Shut-off Check</title>
+<meta name="description" content="What state hot-weather shut-off rules miss: where uncovered heat-alert days fall, which rules start too late, and what recent rule changes gained.">
+<meta property="og:title" content="Findings | Heat Shut-off Check">
+<meta property="og:description" content="What state hot-weather shut-off rules miss: where uncovered heat-alert days fall, which rules start too late, and what recent rule changes gained.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23141B3C'/%3E%3Crect x='7' y='7' width='8' height='8' fill='%23FFC94D'/%3E%3Crect x='17' y='7' width='8' height='8' fill='%23343D6B'/%3E%3Crect x='7' y='17' width='8' height='8' fill='%23343D6B'/%3E%3Crect x='17' y='17' width='8' height='8' fill='%23FF6B4A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="bar-top"><div class="wrap">
+  <a class="brand" href="index.html">Heat Shut-off Check</a>
+  <nav aria-label="Main"><ul>
+    <li><a href="index.html">Check your state</a></li>
+    <li><a href="findings.html" aria-current="page">Findings</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="act.html">Take action</a></li>
+    <li><a href="method.html">How it works</a></li>
+  </ul></nav>
+</div></div>
+
+<header class="page-hero" id="main"><div class="wrap">
+  <h1>What the check found</h1>
+  <p>On the days the National Weather Service called the heat dangerous, was a household protected?</p>
+</div></header>
+<main>
+  <section>
+    <div class="wrap">
+      <h2>Without a rule, shut-offs continue through summer</h2>
+      <p>A household that can't pay can lose electricity, and with it the air conditioning or fan. Some states bar this in extreme heat. Most coverage stops at counting those states. This site tests each rule against the days the heat was dangerous.</p>
+      <div class="facts">
+        <div class="fact"><b>13.4 million</b>electric disconnections in the US in 2024. One home can be counted more than once.</div>
+        <div class="fact"><b>1,412,514</b>of those fell in June to August in the 24 states that have no hot-weather rule today.</div>
+        <div class="fact"><b>3,499</b>June to August shut-offs in Arizona, which has a summer rule, against 29,023 in December alone.</div>
+      </div>
+      <p class="note">National shut-offs do not peak in summer: July 2024 was the lowest month, with 967,012. Nobody counts how many people are harmed by heat-wave shut-offs. People have died, though. Source for all counts: <a href="https://www.eia.gov/analysis/requests/residential/utility/" rel="noopener">EIA 2024 Residential Utility Disconnections Report</a>.</p>
+      <div class="cases">
+        <div><h3>A $51 balance on a 107°F day</h3><p>In September 2018 an Arizona utility cut power to a 72-year-old woman. The medical examiner found environmental heat exposure combined with heart disease. <a href="https://apnews.com/article/arizona-heat-death-legacy-3fce53af423293d9fb15d7889dee9e13" rel="noopener">Associated Press</a></p></div>
+        <div><h3>A rule on paper, dropped three days earlier</h3><p>In May 2024 the same utility disconnected an 82-year-old customer on a 99°F day, three days after dropping its temperature policy. She was found dead six days later. The utility agreed to a $7 million settlement in 2026. <a href="https://courthousenews.com/settlement-bars-arizona-utility-from-extreme-heat-disconnections/" rel="noopener">Courthouse News</a></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tint">
+    <div class="wrap">
+      <h2>Most of the uncovered days are in no-rule states</h2>
+      <div class="share" role="img" aria-label="Share of uncovered person-alert-days: no rule 78.9 percent, rule misses some alert days 15.0 percent, rule covers only some customers 6.1 percent.">
+        <div style="width:78.9%;background:#343D6B">78.9% no rule</div>
+        <div style="width:15%;background:#D9411E">15.0%</div>
+        <div style="width:6.1%;background:#8A4A12">6.1%</div>
+      </div>
+      <ul class="ckey">
+        <li><i style="background:#343D6B"></i>No rule (24 states)</li>
+        <li><i style="background:#D9411E"></i>Rule covers everyone but misses alert days (23)</li>
+        <li><i style="background:#8A4A12"></i>Rule covers only some customers (2)</li>
+      </ul>
+      <p class="note">Uncovered alert days multiplied by state population. This is a scenario, not a measurement: it applies the weather of each state's five largest counties to the whole state.</p>
+
+      <h3 style="margin-top:44px">Most uncovered heat-alert days a year, for an ordinary household</h3>
+      <div class="chart" id="rank"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Changing a rule works, and the gain can be measured</h2>
+      <p>Uncovered alert days a year under the old and current rule, on the same 2015 to 2024 weather.</p>
+      <div class="pair">
+        <div class="chart"><h3>California: 100°F to 90°F</h3>
+          <div class="row" style="margin-top:12px"><span>Old rule</span><div class="track" style="--w:100%;width:var(--w)"><i class="old" style="width:100%"></i></div><span class="val">4.0</span></div>
+          <div class="row"><span>Now</span><div class="track" style="--w:27.5%;width:var(--w)"><i class="s" style="width:100%"></i></div><span class="val">1.1</span></div>
+          <p class="note">Days in force rise from 20.1 to 81.6 a year.</p></div>
+        <div class="chart"><h3>Illinois: 95°F to 90°F plus alerts</h3>
+          <div class="row" style="margin-top:12px"><span>Old rule</span><div class="track" style="--w:22.5%;width:var(--w)"><i class="old" style="width:100%"></i></div><span class="val">0.9</span></div>
+          <div class="row"><span>Now</span><div class="track" style="--w:0%;width:var(--w)"></div><span class="val">0.0</span></div>
+          <p class="note">Days in force rise from 2.6 to 18.2 a year.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tint">
+    <div class="wrap">
+      <h2>Three different problems need three different fixes</h2>
+      <div class="fix"><h3>Adopt a rule</h3><p id="fix-none"></p></div>
+      <div class="fix"><h3>Change the trigger</h3><p>Some rules start too late. Mississippi and Delaware each leave 76% of alert days uncovered, and Missouri leaves 44%. Rules tied to weather-service advisories avoid this gap.</p></div>
+      <div class="fix"><h3>Widen who is covered</h3><p id="fix-subset"></p></div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">Covers 48 states and DC; Alaska and Hawaii are not included. Student project, not legal advice. <a href="https://github.com/TommyWang469/un-final-idea" rel="noopener">Data and code</a></div></footer>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
