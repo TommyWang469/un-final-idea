@@ -9,6 +9,23 @@ const none = STATES.filter(s => s.covers === "none");
 const byAbbr = Object.fromEntries(STATES.map(s => [s.abbr, s]));
 
 if ($("n-none")) $("n-none").textContent = none.length;
+
+// highlighter marks draw once when they scroll into view
+if ("IntersectionObserver" in window) {
+  const mo = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); mo.unobserve(e.target); } }), {threshold:.8});
+  document.querySelectorAll(".mark").forEach(m => mo.observe(m));
+} else document.querySelectorAll(".mark").forEach(m => m.classList.add("in"));
+
+// live fights and recent changes, as of October 2026 (sources: nonprofit-playbook.md 1.6)
+const NEWS = {
+  MA: `<b>A bill is in play.</b> The Senate's version (S.3143, passed July 2026) would stop shut-offs for households in financial hardship when it is expected to pass 85°F three days in a row, May 15 to September 15. The final bill (H5175) was still with a conference committee in mid-October 2026. <a href="https://malegislature.gov/Bills/194/H5175" rel="noopener">Bill page</a>`,
+  PA: `<b>An opening.</b> The state's utility-customer law (Chapter 14) lapsed at the end of 2024 and is being renewed. A 2024 House version added a summer shut-off ban. Neither current renewal bill (SB 154, HB 2333) includes one in its summary, so a ban could still be pushed as an amendment. <a href="https://www.spotlightpa.org/news/2024/12/pennsylvania-winter-utility-shutoff-consumer-protection-law-reauthorization/" rel="noopener">Spotlight PA</a>`,
+  FL: `<b>A bill died.</b> The PAUSE Act (H 419 / SB 330) died in committee on June 16, 2025. <a href="https://www.flhouse.gov/Sections/Bills/billsdetail.aspx?BillId=80992" rel="noopener">Bill page</a>`,
+  VT: `<b>A bill is stuck.</b> H.88 would stop shut-offs at 92°F or hotter. It has sat in a House committee since January 2025. <a href="https://legislature.vermont.gov/bill/status/2026/H.88" rel="noopener">Bill page</a>`,
+  CA: `<b>Changed in July 2026.</b> The utility commission lowered the trigger from 100°F to 90°F. On the same weather, uncovered alert days fall from 4.0 to 1.1 a year. The 2024 shut-off count above was under the old rule.`,
+  IL: `<b>Changed in 2023.</b> A law lowered the trigger from 95°F to 90°F and added weather-service alerts. On the same weather, uncovered alert days fall from 0.9 to 0.0 a year.`,
+  NY: `<b>New in March 2026.</b> The state utility commission adopted this rule. It did not exist in 2024, when the shut-off count above was taken.`,
+};
 if ($("stage")) initCheck();
 if ($("rank")) initFindings();
 
@@ -43,7 +60,7 @@ function initCheck() {
   else {
     const fall = STATES.filter(s => kind(s) !== "lit").sort((a, b) => SHAPES[a.abbr].x - SHAPES[b.abbr].x);
     fall.forEach((s, i) => setTimeout(() => {
-      stage.querySelector(`.st[data-s="${s.abbr}"]`).classList.add("off");
+      stage.querySelector(`.st[data-s="${s.abbr}"]`).classList.add("off", "cut");
       const t = [...stage.querySelectorAll(".lab")].find(l => l.textContent === s.abbr);
       if (t) t.classList.add("off");
     }, 600 + i * 75));
@@ -99,18 +116,41 @@ function initCheck() {
     d.className = kind(s);
     d.hidden = false;
     d.style.animation = "none"; d.offsetWidth; d.style.animation = "";
-    const who = s.covers === "subset" ? `<p><b>Covers only some customers.</b> ${esc(s.note)}. Everyone else is unprotected on all ${s.alert.toFixed(1)} alert days.</p>`
-              : s.note ? `<p class="fine">${esc(s.note)}.</p>` : "";
-    const src = {primary: "Read from the state's own legal text.", secondary: "Read from a secondary source, not the legal text itself.", "own code": "No rule: checked against the state's own code.", "own code (one section)": "No rule: one section of the state's termination rules was checked.", "regulator page": "No rule: checked against the state regulator's own list of protections.", "news report": "No rule: per a news report."}[s.verified] || "Two independent compilations list no hot-weather rule; not confirmed from the state's own code.";
+    const name = (s.abbr === "DC" ? "the " : "") + esc(s.state);
+    const src = {primary: "Read from the state's own legal text.", secondary: "Read from a secondary source, not the legal text itself.", "own code": "No rule: checked against the state's own code.", "own code (one section)": "No rule: one section of the state's shut-off rules was checked.", "regulator page": "No rule: checked against the state regulator's own list of protections.", "news report": "No rule: per a news report."}[s.verified] || "Two separate national lists show no hot-weather rule. Not yet confirmed from the state's own code.";
+    const alertRule = /weather-service/.test(s.rule);
+    const ask = s.covers === "none"
+        ? `<b>Ask for a rule.</b> No state rule stops a utility in ${name} from cutting off power for an unpaid bill on a dangerously hot day. A rule that turns on whenever the weather service issues a heat alert would cover every alert day. Texas, Louisiana and Minnesota already use one.`
+      : s.covers === "subset"
+        ? `<b>Ask for a rule that covers every household.</b> Today it protects only some people (${esc(s.note.replace(/^Only /, "").toLowerCase())}). Everyone else is unprotected on every alert day.`
+      : kind(s) === "gap"
+        ? `<b>Ask for a better trigger.</b> The rule misses ${o.toFixed(1)} of ${s.alert.toFixed(1)} alert days a year. Adding weather-service heat alerts as a trigger, as Illinois did in 2023, closes that gap.`
+        : `<b>Protect what you have.</b> The rule covers almost every alert day${alertRule ? ", because it turns on with the alert itself" : ""}. Ask lawmakers to keep it, and check that it reaches city-owned utilities and co-ops, which many rules leave out.`;
+    const summer = typeof SUMMER !== "undefined" && SUMMER[s.state];
     d.innerHTML = `<h3>${esc(s.state)}</h3>
-      <p class="big"><b>${esc(s.rule[0].toUpperCase() + s.rule.slice(1))}</b></p>${who}
-      <div class="split" title="${(s.alert - o).toFixed(1)} covered, ${o.toFixed(1)} uncovered"><i class="s" style="width:${s.alert ? 100 * (s.alert - o) / s.alert : 0}%"></i><i class="o" style="width:${s.alert ? 100 * o / s.alert : 0}%"></i></div>
-      <p>${s.alert.toFixed(1)} heat-alert days a year, of which <b>${o.toFixed(1)}</b> are not covered for an ordinary household. ${s.covers === "none" ? "" : `The rule is in force ${s.on.toFixed(1)} days a year.`} ${s.hot95.toFixed(1)} days a year reach 95°F; ${s.hi105.toFixed(1)} reach a heat index of 105°F.</p>
-      ${!s.quote ? "" : s.covers === "none" ? `<p class="fine">What the check found: ${esc(s.quote)}</p>` : `<blockquote>${esc(s.quote)}</blockquote>`}
-      <p class="fine">${src} ${/^https?:/.test(s.source) ? `<a href="${esc(s.source)}" rel="noopener">Source</a>` : ""}</p>`;
+      <p class="rule">${s.covers === "none" ? "<b>No hot-weather rule.</b>" : `Rule: <b>${esc(s.rule)}</b>`}</p>
+      <div class="cols">
+        <div>
+          <h4>On dangerous days</h4>
+          <div class="split" title="${(s.alert - o).toFixed(1)} covered, ${o.toFixed(1)} uncovered"><i class="s" style="width:${s.alert ? 100 * (s.alert - o) / s.alert : 0}%"></i><i class="o" style="width:${s.alert ? 100 * o / s.alert : 0}%"></i></div>
+          <p>The weather service warned of dangerous heat on <b>${s.alert.toFixed(1)} days a year</b>. On <b>${o.toFixed(1)}</b> of them, ${s.covers === "subset" ? "most households" : "a household"} had no protection.${s.covers === "none" ? "" : ` The rule is on ${s.on.toFixed(1)} days a year.`}</p>
+          ${summer ? `<p>Utilities here cut off home electricity <b>${summer.toLocaleString("en-US")} times</b> from June to August 2024.</p>` : ""}
+          ${NEWS[s.abbr] ? `<p>${NEWS[s.abbr]}</p>` : ""}
+        </div>
+        <div>
+          <h4>What to ask for</h4>
+          <p>${ask}</p>
+          <p>Who decides: your <b>state legislators</b> (<a href="https://openstates.org/find_your_legislator/" rel="noopener">find yours</a>) and your <b>state utility commission</b>.</p>
+          <a class="act" href="act.html">How to ask: our step-by-step guide</a>
+        </div>
+      </div>
+      ${!s.quote ? "" : s.covers === "none" ? `<p class="fine" style="margin-top:18px">What we found in the state's rules: ${esc(s.quote)}</p>` : `<blockquote>${esc(s.quote)}</blockquote>`}
+      ${s.covers === "all" && s.note ? `<p class="fine">${esc(s.note)}.</p>` : ""}
+      <p class="fine">${src} ${/^https?:/.test(s.source) ? `<a href="${esc(s.source)}" rel="noopener">Source</a>.` : ""} Rules as of October 2026. Shut-off count: <a href="https://www.eia.gov/analysis/requests/residential/utility/" rel="noopener">US Energy Information Administration</a>.</p>`;
     document.querySelectorAll(".st, .win").forEach(w => w.setAttribute("aria-pressed", w.dataset.s === abbr));
     history.replaceState(null, "", "#" + abbr);
     render();
+    const row = document.querySelector(`#rows tr[data-s="${abbr}"]`); if (row) row.classList.add("arrive");
     if (focus) d.focus(); else d.scrollIntoView({block:"nearest"});
   }
 

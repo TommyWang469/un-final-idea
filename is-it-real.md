@@ -17,7 +17,6 @@ protect people in summer.
    - Florida, no rule: 524,907. That is 24.1% of its year, about what an even spread would give,
      so summer slows nothing down.
    - Alabama, no rule: 120,998.
-   - Georgia, no rule: 124,002.
    - All 24 no-rule states together: 1,412,514.
 2. **Rules work.** Arizona, which pauses shut-offs in summer, had 3,499 from June to August
    against 29,023 in December alone, or 3.1% of its year. The fix is proven, and half the states

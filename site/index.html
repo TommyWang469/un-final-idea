@@ -5,27 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Heat Shut-off Check</title>
 <meta name="google-site-verification" content="8jBbVbUQbBhJqE0kMLwIPE77QKK4b8HMX7MZ5i26LG4">
-<meta name="description" content="Can your electricity be cut off for an unpaid bill in dangerous heat? Check your state's rule and how many heat-alert days it covers, across 48 states and DC.">
+<meta name="description" content="Can your electricity be cut off for an unpaid bill in dangerous heat? Check your state's rule, how many heat-alert days it covers, and what to ask your lawmakers for.">
 <meta property="og:title" content="Heat Shut-off Check">
-<meta property="og:description" content="Can your electricity be cut off for an unpaid bill in dangerous heat? Check your state's rule and how many heat-alert days it covers, across 48 states and DC.">
+<meta property="og:description" content="Can your electricity be cut off for an unpaid bill in dangerous heat? Check your state's rule, how many heat-alert days it covers, and what to ask your lawmakers for.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23141B3C'/%3E%3Crect x='7' y='7' width='8' height='8' fill='%23FFC94D'/%3E%3Crect x='17' y='7' width='8' height='8' fill='%23343D6B'/%3E%3Crect x='7' y='17' width='8' height='8' fill='%23343D6B'/%3E%3Crect x='17' y='17' width='8' height='8' fill='%23FF6B4A'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23171B2A'/%3E%3Crect x='7' y='7' width='8' height='8' fill='%23F5B940'/%3E%3Crect x='17' y='7' width='8' height='8' fill='%233B4256'/%3E%3Crect x='7' y='17' width='8' height='8' fill='%233B4256'/%3E%3Crect x='17' y='17' width='8' height='8' fill='%23E5683A'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="bar-top"><div class="wrap">
-  <a class="brand" href="index.html">Heat Shut-off Check</a>
+  <a class="brand" href="index.html"><svg viewBox="0 0 18 18" aria-hidden="true"><rect width="8" height="8" fill="#F5B940"/><rect x="10" width="8" height="8" fill="#3B4256"/><rect y="10" width="8" height="8" fill="#3B4256"/><rect x="10" y="10" width="8" height="8" fill="#E5683A"/></svg>Heat Shut-off Check</a>
   <nav aria-label="Main"><ul>
     <li><a href="index.html" aria-current="page">Check your state</a></li>
-    <li><a href="findings.html">Findings</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="team.html">Team</a></li>
+    <li><a href="findings.html">Why it matters</a></li>
     <li><a href="act.html">Take action</a></li>
-    <li><a href="method.html">How it works</a></li>
+    <li><a href="about.html">About us</a></li>
+    <li><a href="method.html">How we know</a></li>
   </ul></nav>
 </div></div>
 
@@ -34,9 +33,9 @@
     <div class="hero-grid">
       <div>
         <h1>When it's dangerously hot, can your power be cut off?</h1>
-        <p class="answer">In <b><span id="n-none">24</span> of 48 states and DC</b>, no hot-weather rule stops it.</p>
+        <p class="answer">In <b><span id="n-none">24</span> of 48 states and DC</b>, no state rule stops it.</p>
         <form class="find" id="find">
-          <label for="q">Check your state</label>
+          <label for="q">Look up your state</label>
           <div class="find-row">
             <input type="search" id="q" list="states" placeholder="State name or ZIP code" autocomplete="off">
             <datalist id="states"></datalist>
@@ -44,6 +43,7 @@
           </div>
           <p id="msg" role="status"></p>
         </form>
+        <p class="hint">Or tap a state on the map. Lit windows mean the rule is on when the heat is dangerous.</p>
       </div>
       <div>
         <div class="views" role="group" aria-label="Choose a view">
@@ -55,8 +55,8 @@
           <div id="winView" class="block" role="group" aria-label="Grid of states. Choose a state to see its rule." hidden></div>
         </div>
         <ul class="key">
-          <li><i style="background:var(--lit)"></i>Rule covers at least 9 in 10 heat-alert days</li>
-          <li><i style="background:var(--gap)"></i>Rule has gaps, or covers only some customers</li>
+          <li><i style="background:var(--lit)"></i>Rule covers 9 in 10 heat-alert days or more</li>
+          <li><i style="background:var(--gap)"></i>Rule has gaps, or covers only some people</li>
           <li><i style="background:var(--unlit)"></i>No rule</li>
         </ul>
       </div>
@@ -67,43 +67,69 @@
 <div id="tip" hidden></div>
 
 <main>
+  <section>
+    <div class="wrap narrow">
+      <p class="kicker">How to read this</p>
+      <h2>Two numbers for every state</h2>
+      <p><b>Heat-alert days</b> are the days the National Weather Service warned that the heat was dangerous in the state's five biggest counties. We use the yearly average from 2015 to 2024.</p>
+      <p><b>Uncovered days</b> are the alert days when the state's rule, as written today, would <em>not</em> have stopped a utility from cutting off a home's power for an unpaid bill.</p>
+      <p class="note">A rule that turns on with a weather-service alert covers every alert day by design. So a zero there doesn't prove the rule is well set. The test tells you most about rules set at a fixed temperature. <a href="method.html">How we counted</a></p>
+    </div>
+  </section>
+
   <section id="table">
     <div class="wrap">
-      <h2>Every state</h2>
+      <h2>Every state, side by side</h2>
       <div class="controls">
-        <label>Search the table <input type="text" id="tfind" placeholder="State or rule"></label>
+        <label>Search <input type="text" id="tfind" placeholder="State or rule"></label>
         <label>Protection <select id="show">
           <option value="all">All states</option>
-          <option value="lit">Covers at least 9 in 10 alert days</option>
+          <option value="lit">Covers 9 in 10 alert days or more</option>
           <option value="gap">Covers everyone, with gaps</option>
           <option value="subset">Some customers only</option>
           <option value="none">No rule</option>
         </select></label>
-        <label>Rule trigger <select id="trig">
-          <option value="all">Any trigger</option>
-          <option value="temp">Temperature</option>
-          <option value="index">Heat index</option>
-          <option value="alert">Weather-service alert</option>
+        <label>Rule starts with <select id="trig">
+          <option value="all">Anything</option>
+          <option value="temp">A temperature</option>
+          <option value="index">A heat index</option>
+          <option value="alert">A weather-service alert</option>
         </select></label>
         <label>Sort by <select id="sort">
           <option value="alert_open">Uncovered alert days</option>
           <option value="alert">Alert days</option>
-          <option value="on">Days the rule is in force</option>
-          <option value="hot95">Days at or above 95°F</option>
+          <option value="on">Days the rule is on</option>
+          <option value="hot95">Days at 95°F or hotter</option>
           <option value="state">Name</option>
         </select></label>
       </div>
       <p id="count" role="status"></p>
       <div class="scroll"><table>
-        <thead><tr><th>State</th><th>Rule</th><th>Days in force</th><th>Alert days</th><th>Uncovered</th><th>Days ≥ 95°F</th></tr></thead>
+        <thead><tr><th>State</th><th>Rule</th><th>Days rule is on</th><th>Alert days</th><th>Uncovered</th><th>Days ≥ 95°F</th></tr></thead>
         <tbody id="rows"></tbody>
       </table></div>
-      <p class="note">Figures are yearly averages for 2015 to 2024. A rule tied to a weather-service alert covers alert days by design, so its zero does not prove the rule is well set. The test means most for temperature and heat-index rules.</p>
+      <p class="note">Yearly averages, 2015 to 2024. Click a row to see that state's rule and what to ask for.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap narrow">
+      <h2>Found a gap in your state?</h2>
+      <p>These rules are set by state lawmakers and state utility commissions, and both listen to the people who live there. Our guide walks you through who to contact, what to say, and how to follow up.</p>
+      <p><a class="act" href="act.html"><b>Read the guide: Take action</b></a></p>
     </div>
   </section>
 </main>
-<footer><div class="wrap">Covers 48 states and DC; Alaska and Hawaii are not included. Student project, not legal advice. <a href="https://github.com/TommyWang469/un-final-idea" rel="noopener">Data and code</a></div></footer>
+<footer><div class="wrap">
+  <nav aria-label="Footer"><ul>
+    <li><a href="index.html">Check your state</a></li><li><a href="findings.html">Why it matters</a></li><li><a href="act.html">Take action</a></li><li><a href="about.html">About us</a></li><li><a href="method.html">How we know</a></li>
+  </ul></nav>
+  <p>Covers 48 states and DC; Alaska and Hawaii are not included. A student project. Not legal advice.</p>
+  <p>Spotted a mistake? <a href="https://github.com/TommyWang469/un-final-idea/issues" rel="noopener">Tell us on GitHub</a>, where all our <a href="https://github.com/TommyWang469/un-final-idea" rel="noopener">data and code</a> live.</p>
+</div></footer>
+<script>document.documentElement.classList.add("js")</script>
 <script src="data.js"></script>
+<script src="eia.js"></script>
 <script src="map.js"></script>
 <script src="zip.js"></script>
 <script src="app.js"></script>

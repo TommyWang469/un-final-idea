@@ -3,58 +3,119 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How it works | Heat Shut-off Check</title>
-<meta name="description" content="How the Heat Shut-off Check was built: the rules, weather data, definitions, limits and sources.">
-<meta property="og:title" content="How it works | Heat Shut-off Check">
-<meta property="og:description" content="How the Heat Shut-off Check was built: the rules, weather data, definitions, limits and sources.">
+<title>How we know | Heat Shut-off Check</title>
+<meta name="description" content="How Heat Shut-off Check was built: where the rules and weather data come from, what we count, the limits, the mistakes we caught, and every source.">
+<meta property="og:title" content="How we know | Heat Shut-off Check">
+<meta property="og:description" content="How Heat Shut-off Check was built: where the rules and weather data come from, what we count, the limits, the mistakes we caught, and every source.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23141B3C'/%3E%3Crect x='7' y='7' width='8' height='8' fill='%23FFC94D'/%3E%3Crect x='17' y='7' width='8' height='8' fill='%23343D6B'/%3E%3Crect x='7' y='17' width='8' height='8' fill='%23343D6B'/%3E%3Crect x='17' y='17' width='8' height='8' fill='%23FF6B4A'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23171B2A'/%3E%3Crect x='7' y='7' width='8' height='8' fill='%23F5B940'/%3E%3Crect x='17' y='7' width='8' height='8' fill='%233B4256'/%3E%3Crect x='7' y='17' width='8' height='8' fill='%233B4256'/%3E%3Crect x='17' y='17' width='8' height='8' fill='%23E5683A'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Newsreader:opsz,wght@6..72,400;6..72,600;6..72,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="bar-top"><div class="wrap">
-  <a class="brand" href="index.html">Heat Shut-off Check</a>
+  <a class="brand" href="index.html"><svg viewBox="0 0 18 18" aria-hidden="true"><rect width="8" height="8" fill="#F5B940"/><rect x="10" width="8" height="8" fill="#3B4256"/><rect y="10" width="8" height="8" fill="#3B4256"/><rect x="10" y="10" width="8" height="8" fill="#E5683A"/></svg>Heat Shut-off Check</a>
   <nav aria-label="Main"><ul>
     <li><a href="index.html">Check your state</a></li>
-    <li><a href="findings.html">Findings</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="team.html">Team</a></li>
+    <li><a href="findings.html">Why it matters</a></li>
     <li><a href="act.html">Take action</a></li>
-    <li><a href="method.html" aria-current="page">How it works</a></li>
+    <li><a href="about.html">About us</a></li>
+    <li><a href="method.html" aria-current="page">How we know</a></li>
   </ul></nav>
 </div></div>
 
-<header class="page-hero" id="main"><div class="wrap">
-  <h1>How it works</h1>
-  <p>This is a student project. It is not legal advice and has not been reviewed by a lawyer or a utility regulator.</p>
+<main id="main">
+<header class="page-head"><div class="wrap">
+  <p class="kicker">How we know</p>
+  <h1>Every number here can be checked</h1>
+  <p class="lede">Each state's rule is quoted and linked on its page. All our data and code are public, and our scripts rebuild every weather and shut-off figure on this site. Other facts link to their sources. This is a student project: a lawyer or a utility regulator has not reviewed it.</p>
+  <ul class="toc" aria-label="On this page">
+    <li><a href="#how">How we did it</a></li><li><a href="#limits">Limits</a></li><li><a href="#mistakes">Mistakes we caught</a></li><li><a href="#before">Who counted before us</a></li><li><a href="#sources">Sources</a></li>
+  </ul>
 </div></header>
-<main><section><div class="wrap">
-  <details open><summary>Method</summary><ul>
-    <li><b>Rules.</b> Each state's hot-weather rule was coded by hand: the trigger (a temperature, a heat index, or a weather-service alert), how far ahead the forecast looks, the season, and who is covered. The source and quoted text appear with each state. Where only a secondary source was read, the state is marked.</li>
-    <li><b>Weather.</b> Daily maximum temperature and heat index from the nearest long-running airport station to the population centre of each state's five most populous counties, 2015 to 2024, weighted by county population.</li>
-    <li><b>Dangerous days.</b> Days when the National Weather Service had a heat advisory or (excessive) heat warning out for that county's forecast zone. This uses the weather service's own local definition, which differs by region.</li>
-    <li><b>Covered.</b> A dangerous day is covered if the state's rule, as written today, would have barred a shut-off on it.</li>
-    <li><b>ZIP search.</b> A ZIP code is matched to a state using the Census 2020 ZIP-area file. Your state's result is the same for every ZIP in it; results are not local.</li>
-  </ul></details>
-  <details open><summary>Limits</summary><ul>
-    <li><b>Observed weather stands in for forecasts.</b> Rules act on forecasts, which can miss in either direction.</li>
-    <li><b>Today's rules, past weather.</b> Several rules changed between 2023 and 2026. The shut-off counts are from 2024, so some states' rules were not yet in place.</li>
-    <li><b>Legal protection is not the same as what happened.</b> The state results do not count actual disconnections.</li>
-    <li><b>Many rules reach only regulated utilities.</b> Customers of cooperatives and city-owned utilities are often outside them.</li>
-    <li><b>Five counties per state,</b> measured at airports. Rural areas and neighbourhood heat are under-represented.</li>
-    <li><b>The list of states with no rule is the weakest input.</b> A state is shown with no rule only where two independent compilations agree. The federal table alone wrongly lists Maine, Minnesota, New York and Oregon as having none.</li>
-    <li><b>Texas is undercounted.</b> Its rule triggers on an advisory anywhere in a utility's territory; this checks only the customer's own zone.</li>
-    <li><b>Arizona is scored on its temperature option.</b> A utility may instead adopt a June 1 to October 15 pause.</li>
-  </ul></details>
-  <details open><summary>Sources</summary>
-    <p>State statutes, regulations and commission orders (linked per state). National Weather Service alert history and airport observations via the Iowa Environmental Mesonet. Forecast zones from api.weather.gov. County populations from the 2020 Census. The no-rule list is where the LIHEAP Clearinghouse (US Department of Health and Human Services) and ElectricRates.org's 2026 state table agree. Shut-off counts from the US Energy Information Administration. State outlines from the us-atlas project, built on Census boundaries.</p>
-  </details>
-</div></section></main>
-<footer><div class="wrap">Covers 48 states and DC; Alaska and Hawaii are not included. Student project, not legal advice. <a href="https://github.com/TommyWang469/un-final-idea" rel="noopener">Data and code</a></div></footer>
 
+<section id="how">
+  <div class="wrap">
+    <h2>How we did it</h2>
+    <ol class="steps">
+      <li><h3>We read each state's rule</h3><p>For every state, we wrote down what turns its rule on (a temperature, a heat index, or a weather-service alert), how far ahead it looks at the forecast, which months it covers, and who it protects. 23 of the 25 rules were read from the state's own legal text. Two (Indiana and New York) come from a secondary source and are marked.</p></li>
+      <li><h3>We checked which states have no rule</h3><p>A state counts as having no rule only where two separate national lists agree: the federal LIHEAP Clearinghouse table and ElectricRates.org's 2026 table. For 16 of those 24 states, we checked further against the state's own code, its regulator, or a news report.</p></li>
+      <li><h3>We gathered ten years of weather</h3><p>For 2015 to 2024, we took the daily high temperature and heat index from the nearest long-running airport weather station to the five most populous counties in each state, weighted by how many people live in each county.</p></li>
+      <li><h3>We marked the dangerous days</h3><p>A dangerous day is a day the National Weather Service had a heat advisory or heat warning out for that county, at some point between 9 a.m. and 9 p.m. Days with no weather record are left out. We use the weather service's own local idea of "dangerous", so a heat advisory in Maine is set lower than one in Arizona. That's on purpose.</p></li>
+      <li><h3>We checked each day against the rule</h3><p>A dangerous day counts as <b>covered</b> if the state's rule, as written today, would have stopped a utility from cutting off a home's power for an unpaid bill that day.</p></li>
+    </ol>
+    <p class="note">The ZIP code search only finds your state. Results are the same for every ZIP code in a state; they aren't local.</p>
+  </div>
+</section>
+
+<section id="limits">
+  <div class="wrap narrow">
+    <h2>What this can and can't tell you</h2>
+    <details open><summary>A rule on paper isn't a shut-off prevented</summary><p>We count when the law protects people, not what utilities actually did. Many rules apply only to utilities the state regulates; customers of co-ops and city-owned utilities are often outside them.</p></details>
+    <details><summary>Real weather stands in for forecasts</summary><p>Most rules act on a forecast, and forecasts can miss in either direction.</p></details>
+    <details><summary>Today's rules, past weather</summary><p>Several rules changed between 2023 and 2026. We apply today's rule to 2015 to 2024 weather. The shut-off counts are from 2024, before some rules existed.</p></details>
+    <details><summary>Airports, not neighborhoods</summary><p>Readings come from the nearest long-running airport station, never more than 40 miles from a county's center. We use five counties per state, so rural areas and hot city blocks are under-represented.</p></details>
+    <details><summary>Heat alerts have become more common</summary><p>The weather service issued about four times as many heat alerts for these areas in 2024 as in 2015. Some of that is hotter weather; some is the service lowering its bar in places. So a ten-year average understates how often alerts come today.</p></details>
+    <details><summary>A few states are simplified</summary>
+      <ul>
+        <li><b>Texas</b> is undercounted. Its rule turns on with an alert anywhere in a utility's area; we check only the customer's own area.</li>
+        <li><b>Arizona</b> is scored on its 95°F option. A utility may instead choose a June 1 to October 15 pause, which protects more days.</li>
+        <li><b>Oregon's</b> rule also looks 24 hours ahead. We don't model that yet, so its days may be slightly low.</li>
+      </ul>
+    </details>
+    <details><summary>The no-rule list is our weakest input</summary><p>Eight of the 24 no-rule states rest on the two national lists alone: Michigan, Montana, New Hampshire, North Dakota, South Carolina, South Dakota, Vermont and Wyoming. The 16 we checked further hold 92% of the no-rule group's exposure.</p></details>
+    <details><summary>Nobody counts the harm</summary><p>There is no national count of injuries or deaths from heat-wave shut-offs. We never say "shut-offs kill this many people a year", because no one knows.</p></details>
+  </div>
+</section>
+
+<section id="mistakes">
+  <div class="wrap narrow">
+    <h2>Mistakes we caught</h2>
+    <p>We keep these on the record because each one would have produced a confident, wrong claim.</p>
+    <ul class="plain">
+      <li><b>The federal table was wrong.</b> It lists Maine, Minnesota, New York and Oregon as having no hot-weather rule. All four have one. It also gets the trigger wrong in several states that do, including Delaware, Oklahoma, Georgia, California and Illinois. Our first quick test trusted that table and passed for the wrong reason.</li>
+      <li><b>New York almost looked like the second-worst unprotected state.</b> It adopted a rule in March 2026. Checking that turned up the other errors in the federal table.</li>
+      <li><b>A heat-index shortcut was far too high in humid places.</b> When we checked it against airport records for Miami, Tampa and Oklahoma City, it overcounted dangerous days several times over. Every heat-index figure now comes from station records.</li>
+      <li><b>An outside code review found seven real bugs,</b> such as counting days with no weather record as unprotected. All seven were fixed. A second review confirmed the fixes and reproduced every headline number. None of the bugs changed the two main conclusions.</li>
+      <li><b>A page-reading tool gave false answers.</b> It said "no heat provision" for pages that had really sent it to the wrong page or failed to load. We threw out those three results.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="before">
+  <div class="wrap narrow">
+    <h2>Who counted before us</h2>
+    <p>The <a href="https://utilitydisconnections.org/" rel="noopener">Energy Justice Lab</a> at Indiana University tracks every state's protections and has counted the days California's old 100°F rule was on. The <a href="https://www.nclc.org/" rel="noopener">National Consumer Law Center</a> recommends heat-index or heat-alert triggers. We didn't find a published count, for every state, of how many dangerous days each rule covers. That's the piece we add. It's a small gap, and the experts could close it quickly with better data than ours.</p>
+    <p>That half the states have no rule was already known. What's new here is how big that gap is in dangerous days, and where it falls.</p>
+  </div>
+</section>
+
+<section id="sources">
+  <div class="wrap narrow">
+    <h2>Sources</h2>
+    <ul class="plain">
+      <li><b>State rules:</b> state laws, regulations and utility-commission orders, linked on each state's page.</li>
+      <li><b>No-rule list:</b> where the <a href="https://liheapch.acf.gov/" rel="noopener">LIHEAP Clearinghouse</a> (US Department of Health and Human Services) and ElectricRates.org's 2026 state table agree, plus our own checks.</li>
+      <li><b>Heat alerts and airport weather:</b> National Weather Service records, via the Iowa Environmental Mesonet.</li>
+      <li><b>Forecast zones:</b> api.weather.gov.</li>
+      <li><b>County populations:</b> 2020 US Census.</li>
+      <li><b>Shut-off counts:</b> <a href="https://www.eia.gov/analysis/requests/residential/utility/" rel="noopener">US Energy Information Administration, 2024 Residential Utility Disconnections Report</a>. Some homes are counted more than once.</li>
+      <li><b>Map:</b> the us-atlas project, built on Census boundaries.</li>
+      <li><b>Code and data:</b> <a href="https://github.com/TommyWang469/un-final-idea" rel="noopener">on GitHub</a>.</li>
+    </ul>
+    <p>Found an error? <a href="https://github.com/TommyWang469/un-final-idea/issues" rel="noopener">Tell us on GitHub</a>. We fix mistakes and say so.</p>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">
+  <nav aria-label="Footer"><ul>
+    <li><a href="index.html">Check your state</a></li><li><a href="findings.html">Why it matters</a></li><li><a href="act.html">Take action</a></li><li><a href="about.html">About us</a></li><li><a href="method.html">How we know</a></li>
+  </ul></nav>
+  <p>Covers 48 states and DC; Alaska and Hawaii are not included. A student project. Not legal advice.</p>
+  <p>Spotted a mistake? <a href="https://github.com/TommyWang469/un-final-idea/issues" rel="noopener">Tell us on GitHub</a>, where all our <a href="https://github.com/TommyWang469/un-final-idea" rel="noopener">data and code</a> live.</p>
+</div></footer>
 </body>
 </html>

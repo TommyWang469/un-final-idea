@@ -9,7 +9,7 @@ const TEAM = [
   },
 ];
 
-document.getElementById("team").innerHTML = TEAM.map(p => {
+document.getElementById("teamlist").innerHTML = TEAM.map(p => {
   const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   const initials = p.name.split(/\s+/).map(w => w[0]).slice(0, 2).join("");
   const face = p.photo ? `<img class="face" src="${esc(p.photo)}" alt="${esc(p.name)}">` : `<span class="face" aria-hidden="true">${esc(initials)}</span>`;
