@@ -9,7 +9,7 @@ Status notes for whoever picks this up next (Tommy or an AI assistant). Last upd
 - **To update the live site:** edit files in `site/`, then run `sh update-site.sh "what changed"`. It clones the public repo, copies `site/*` in, commits and pushes. Live in about a minute. The commit fails if nothing changed.
 - **Google Search Console:** ownership verified 2026-11-01. Keep the `google-site-verification` meta tag in `site/index.html`, or verification breaks. Still to do: submit `sitemap.xml` and click "Request indexing". The site was not showing in Google search yet on 2026-11-01.
 
-## Site layout (`site/`), restructured 2026-11-04
+## Site layout (`site/`), restructured and published 2026-11-04
 
 No build step: plain HTML, CSS and JS. Five pages, same nav and footer on each:
 - `index.html` "Check your state": night map + search. The state panel (`app.js`) shows the rule, alert days, summer 2024 shut-offs (`eia.js`), live-bill notes (`NEWS` object in `app.js`, as of Oct 2026), and a per-state "what to ask for". Then the sortable table.
@@ -39,7 +39,7 @@ No build step: plain HTML, CSS and JS. Five pages, same nav and footer on each:
 
 ## Known open issues
 
-- Chapter sign-ups and corrections point to GitHub issues. A real contact email would be friendlier; add one when Tommy picks it.
+- Contact email heatshutoffcheck@gmail.com (added 2026-11-04) is on about.html (chapters), every footer, and method.html sources; GitHub issues kept as a second route on method.html.
 
 - **Oregon:** `rules.csv` now uses the permanent rule (OAR 860-021-0407, effective 2025-12-30), but its 24-hour look-ahead isn't coded, so Oregon's days in force (1.9) may be slightly low.
 - Tommy should still re-read all 25 rules in `rules.csv` and sign off on them, and have one field expert (Energy Justice Lab or NCLC) check them.

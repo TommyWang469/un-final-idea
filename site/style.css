@@ -277,3 +277,4 @@ details[open] > summary::before { transform:rotate(90deg); }
 @media (prefers-reduced-motion:reduce) { #table tr.sel.arrive td { animation:none; } summary::before, .check label { transition:none; } }
 ul.plain + p { margin-top:18px; }
 .ckey + .note { margin-top:10px; }
+.hero :focus-visible { outline-color:var(--lit); }
